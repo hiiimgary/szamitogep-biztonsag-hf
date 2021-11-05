@@ -55,36 +55,57 @@ include CMakeFiles\CAFFParser.dir\progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles\CAFFParser.dir\flags.make
 
-CMakeFiles\CAFFParser.dir\library.cpp.obj: CMakeFiles\CAFFParser.dir\flags.make
-CMakeFiles\CAFFParser.dir\library.cpp.obj: ..\library.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CAFFParser.dir/library.cpp.obj"
+CMakeFiles\CAFFParser.dir\caff_parser.cpp.obj: CMakeFiles\CAFFParser.dir\flags.make
+CMakeFiles\CAFFParser.dir\caff_parser.cpp.obj: ..\caff_parser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CAFFParser.dir/caff_parser.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\CAFFParser.dir\library.cpp.obj /FdCMakeFiles\CAFFParser.dir\CAFFParser.pdb /FS -c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\library.cpp
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\CAFFParser.dir\caff_parser.cpp.obj /FdCMakeFiles\CAFFParser.dir\CAFFParser.pdb /FS -c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff_parser.cpp
 <<
 
-CMakeFiles\CAFFParser.dir\library.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CAFFParser.dir/library.cpp.i"
-	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\CAFFParser.dir\library.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\library.cpp
+CMakeFiles\CAFFParser.dir\caff_parser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CAFFParser.dir/caff_parser.cpp.i"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\CAFFParser.dir\caff_parser.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff_parser.cpp
 <<
 
-CMakeFiles\CAFFParser.dir\library.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CAFFParser.dir/library.cpp.s"
+CMakeFiles\CAFFParser.dir\caff_parser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CAFFParser.dir/caff_parser.cpp.s"
 	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\CAFFParser.dir\library.cpp.s /c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\library.cpp
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\CAFFParser.dir\caff_parser.cpp.s /c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff_parser.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\main.cpp.obj: CMakeFiles\CAFFParser.dir\flags.make
+CMakeFiles\CAFFParser.dir\main.cpp.obj: ..\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CAFFParser.dir/main.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\CAFFParser.dir\main.cpp.obj /FdCMakeFiles\CAFFParser.dir\CAFFParser.pdb /FS -c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\main.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CAFFParser.dir/main.cpp.i"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\CAFFParser.dir\main.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\main.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CAFFParser.dir/main.cpp.s"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\CAFFParser.dir\main.cpp.s /c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\main.cpp
 <<
 
 # Object files for target CAFFParser
 CAFFParser_OBJECTS = \
-"CMakeFiles\CAFFParser.dir\library.cpp.obj"
+"CMakeFiles\CAFFParser.dir\caff_parser.cpp.obj" \
+"CMakeFiles\CAFFParser.dir\main.cpp.obj"
 
 # External object files for target CAFFParser
 CAFFParser_EXTERNAL_OBJECTS =
 
-CAFFParser.lib: CMakeFiles\CAFFParser.dir\library.cpp.obj
+CAFFParser.lib: CMakeFiles\CAFFParser.dir\caff_parser.cpp.obj
+CAFFParser.lib: CMakeFiles\CAFFParser.dir\main.cpp.obj
 CAFFParser.lib: CMakeFiles\CAFFParser.dir\build.make
 CAFFParser.lib: CMakeFiles\CAFFParser.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library CAFFParser.lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library CAFFParser.lib"
 	$(CMAKE_COMMAND) -P CMakeFiles\CAFFParser.dir\cmake_clean_target.cmake
 	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\lib.exe /nologo /machine:X86 /out:CAFFParser.lib @CMakeFiles\CAFFParser.dir\objects1.rsp 
 

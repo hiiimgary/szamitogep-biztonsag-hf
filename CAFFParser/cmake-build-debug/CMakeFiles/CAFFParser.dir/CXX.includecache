@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/library.cpp
+library.h
+C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/library.h
+iostream
+-
+
+C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/library.h
+

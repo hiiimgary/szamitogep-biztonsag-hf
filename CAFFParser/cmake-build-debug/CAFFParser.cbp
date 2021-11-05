@@ -84,10 +84,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/library.cpp">
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff_parser.cpp">
 			<Option target="CAFFParser"/>
 		</Unit>
-		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/library.h">
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff_parser.h">
+			<Option target="CAFFParser"/>
+		</Unit>
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/main.cpp">
+			<Option target="CAFFParser"/>
+		</Unit>
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/main.h">
 			<Option target="CAFFParser"/>
 		</Unit>
 		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/CMakeLists.txt">

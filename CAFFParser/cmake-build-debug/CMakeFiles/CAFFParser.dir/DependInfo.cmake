@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/library.cpp" "C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/cmake-build-debug/CMakeFiles/CAFFParser.dir/library.cpp.obj"
+  "C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff_parser.cpp" "C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/cmake-build-debug/CMakeFiles/CAFFParser.dir/caff_parser.cpp.obj"
+  "C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/main.cpp" "C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/cmake-build-debug/CMakeFiles/CAFFParser.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")
 

@@ -118,29 +118,53 @@ CAFFParser\fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\build
 .PHONY : CAFFParser\fast
 
-library.obj: library.cpp.obj
-.PHONY : library.obj
+caff_parser.obj: caff_parser.cpp.obj
+.PHONY : caff_parser.obj
 
 # target to build an object file
-library.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\library.cpp.obj
-.PHONY : library.cpp.obj
+caff_parser.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff_parser.cpp.obj
+.PHONY : caff_parser.cpp.obj
 
-library.i: library.cpp.i
-.PHONY : library.i
+caff_parser.i: caff_parser.cpp.i
+.PHONY : caff_parser.i
 
 # target to preprocess a source file
-library.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\library.cpp.i
-.PHONY : library.cpp.i
+caff_parser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff_parser.cpp.i
+.PHONY : caff_parser.cpp.i
 
-library.s: library.cpp.s
-.PHONY : library.s
+caff_parser.s: caff_parser.cpp.s
+.PHONY : caff_parser.s
 
 # target to generate assembly for a file
-library.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\library.cpp.s
-.PHONY : library.cpp.s
+caff_parser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff_parser.cpp.s
+.PHONY : caff_parser.cpp.s
+
+main.obj: main.cpp.obj
+.PHONY : main.obj
+
+# target to build an object file
+main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\main.cpp.obj
+.PHONY : main.cpp.obj
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -151,9 +175,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... CAFFParser
-	@echo ... library.obj
-	@echo ... library.i
-	@echo ... library.s
+	@echo ... caff_parser.obj
+	@echo ... caff_parser.i
+	@echo ... caff_parser.s
+	@echo ... main.obj
+	@echo ... main.i
+	@echo ... main.s
 .PHONY : help
 
 

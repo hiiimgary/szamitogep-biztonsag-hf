@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CAFFParser.lib"
   "CAFFParser.pdb"
-  "CMakeFiles/CAFFParser.dir/library.cpp.obj"
+  "CMakeFiles/CAFFParser.dir/caff_parser.cpp.obj"
+  "CMakeFiles/CAFFParser.dir/main.cpp.obj"
 )
 
 # Per-language clean rules from dependency scanning.
