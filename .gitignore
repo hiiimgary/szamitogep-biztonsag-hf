@@ -1,6 +1,9 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+CAFFParser/.idea/*
+CAFFParser/cmake-build-debug/*
+!CAFFParser/cmake-build-debug/Makefile
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
