@@ -1,9 +1,11 @@
-#include <vector>
-#include <cstdint>
-#include <fstream>
-#include "converter/gif.h"
+//
+// Created by paulg on 2021. 11. 07..
+//
+
+#include <stdio.h>
 #include "caff/caff.h"
 #include "converter/file_to_caff.h"
+#include "converter/caff_to_gif.h"
 
 int main(int argc, const char** argv) {
     /// read arguments
@@ -14,20 +16,13 @@ int main(int argc, const char** argv) {
 //    string input_file = argv[1];
 //    string output_file = argv[2];
 
-    fileReader("samples/1.caff");
-
-//    int width = 100;
-//    int height = 200;
-//    std::vector<uint8_t> black(width * height * 4, 0);
-//    std::vector<uint8_t> white(width * height * 4, 255);
-//
-//    auto fileName = "bwgif.gif";
-//    int delay = 100;
-//    GifWriter g;
-//    GifBegin(&g, fileName, width, height, delay);
-//    GifWriteFrame(&g, black.data(), width, height, delay);
-//    GifWriteFrame(&g, white.data(), width, height, delay);
-//    GifEnd(&g);
-
+    try {
+        Caff* caff = fileReader("samples/1.caff");
+        fileWriter(caff, "best_gif_ever.gif");
+    }
+    catch (const std::exception& e) {
+        printf("%s\n", &e);
+        return -1;
+    }
     return 0;
 }

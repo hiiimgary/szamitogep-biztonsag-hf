@@ -8,14 +8,11 @@
 #include "../caff/caff.h"
 #include "file_to_caff.h"
 
-void fileReader(string input_file) {
+Caff* fileReader(string input_file) {
     /// open filestream
     ifstream input;
     input.open(input_file);
-    if (!input) {
-        printf("input file could not be opened, exiting...\n");
-        return;
-    }
+    if (!input) throw "input file could not be opened, exiting...\n";
 
     /// read data into bytes
     streampos start = input.tellg();
@@ -44,14 +41,14 @@ void fileReader(string input_file) {
                 caff->parseAnimation(block, block_length);
                 break;
             default:
-                printf("content type mismatch in caff header, exiting...\n");
-                return;
+                throw "content type mismatch in caff header, exiting...\n";
         }
         i += 9 + block_length;
     }
 
     input.close();
     printf("end of file reached, closing stream...\n");
+    return caff;
 }
 
 vector<char> trim(vector<char> in, uint64_t from, uint64_t to) {
