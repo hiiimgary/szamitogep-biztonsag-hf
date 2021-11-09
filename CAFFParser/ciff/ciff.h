@@ -13,7 +13,8 @@ private:
     CiffHeader header{};
     CiffContent content{};
 public:
-
+    CiffHeader getHeader();
+    CiffContent getContent();
 };
 
 #endif //CAFFPARSER_CIFF_H
