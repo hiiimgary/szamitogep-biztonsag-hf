@@ -8,7 +8,7 @@
 struct CaffAnimation {
 private:
     uint64_t duration;
-    Ciff* ciff;
+//    Ciff* ciff;
 
 public:
     CaffAnimation();
@@ -17,8 +17,8 @@ public:
     void setDuration(uint64_t d);
     uint64_t getDuration();
 
-    void setCiff(Ciff* c);
-    Ciff* getCiff();
+//    void setCiff(Ciff* c);
+//    Ciff* getCiff();
 };
 
 #endif //CAFFPARSER_CAFF_ANIMATION_H
