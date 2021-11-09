@@ -90,6 +90,9 @@
 		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff_parser.h">
 			<Option target="CAFFParser"/>
 		</Unit>
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/converter/gif.h">
+			<Option target="CAFFParser"/>
+		</Unit>
 		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/main.cpp">
 			<Option target="CAFFParser"/>
 		</Unit>

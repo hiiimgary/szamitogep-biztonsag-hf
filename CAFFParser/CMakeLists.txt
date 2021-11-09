@@ -3,4 +3,4 @@ project(CAFFParser)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_library(CAFFParser caff_parser.cpp main.cpp)
+add_library(CAFFParser caff_parser.cpp main.cpp converter/gif.h)
