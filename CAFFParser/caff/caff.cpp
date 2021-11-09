@@ -56,11 +56,11 @@ void Caff::parseHeader(const vector<char>& block, uint64_t block_length) {
 
     uint64_t header_size = vectorToInt(slice(block, 4, 11));
     header.setHeaderSize(header_size);
-    printf("headerSize: %d\n", header_size);
+    printf("headerSize: %I64d\n", header_size);
 
     uint64_t num_anim = vectorToInt(slice(block, 12, 19));
     header.setNumberOfAnimations(num_anim);
-    printf("NumberOfAnimations: %d\n", num_anim);
+    printf("NumberOfAnimations: %I64d\n", num_anim);
 }
 
 void Caff::parseCredits(vector<char> block, uint64_t block_length) {

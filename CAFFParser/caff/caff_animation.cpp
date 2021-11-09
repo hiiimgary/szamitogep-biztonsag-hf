@@ -19,10 +19,10 @@ uint64_t CaffAnimation::getDuration() {
     return 0;
 }
 
-//void CaffAnimation::setCiff(Ciff *c) {
-//
-//}
-//
-//Ciff *CaffAnimation::getCiff() {
-//    return nullptr;
-//}
+void CaffAnimation::setCiff(Ciff *c) {
+    ciff = c;
+}
+
+Ciff *CaffAnimation::getCiff() {
+    return ciff;
+}

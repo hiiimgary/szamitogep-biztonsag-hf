@@ -17,7 +17,7 @@ int main(int argc, const char** argv) {
 //    string output_file = argv[2];
 
     try {
-        Caff* caff = fileReader("samples/1.caff");
+        Caff* caff = fileReader("../samples/1.caff");
         fileWriter(caff, "best_gif_ever.gif");
     }
     catch (const std::exception& e) {

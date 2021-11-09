@@ -10,7 +10,7 @@
 struct CaffAnimation {
 private:
     uint64_t duration{};
-//    Ciff* ciff{};
+    Ciff* ciff{};
 
 public:
     CaffAnimation();
