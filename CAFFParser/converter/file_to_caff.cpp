@@ -11,8 +11,8 @@
 void fileReader(string input_file) {
     /// open filestream
     ifstream input;
-    input.open(input_file);
-    if (!input) {
+    input.open("../samples/1.caff", ios::in | ios::binary);
+    if (!input.is_open()) {
         printf("input file could not be opened, exiting...\n");
         return;
     }

@@ -10,9 +10,12 @@
 struct CaffAnimation {
 private:
     uint64_t duration{};
-    Ciff* ciff{};
+//    Ciff* ciff{};
 
 public:
+    CaffAnimation();
+    ~CaffAnimation();
+
     void setDuration(uint64_t d);
     uint64_t getDuration();
 

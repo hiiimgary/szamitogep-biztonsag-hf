@@ -2,3 +2,5 @@
 CAFFParser/.idea/*
 CAFFParser/cmake-build-debug/*
 CAFFParser/CMakeLists.txt
+.idea/*
+cmake-build-debug/*
