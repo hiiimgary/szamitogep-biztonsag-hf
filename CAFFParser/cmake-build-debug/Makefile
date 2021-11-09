@@ -118,6 +118,102 @@ CAFFParser\fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\build
 .PHONY : CAFFParser\fast
 
+caff\caff.obj: caff\caff.cpp.obj
+.PHONY : caff\caff.obj
+
+# target to build an object file
+caff\caff.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff\caff.cpp.obj
+.PHONY : caff\caff.cpp.obj
+
+caff\caff.i: caff\caff.cpp.i
+.PHONY : caff\caff.i
+
+# target to preprocess a source file
+caff\caff.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff\caff.cpp.i
+.PHONY : caff\caff.cpp.i
+
+caff\caff.s: caff\caff.cpp.s
+.PHONY : caff\caff.s
+
+# target to generate assembly for a file
+caff\caff.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff\caff.cpp.s
+.PHONY : caff\caff.cpp.s
+
+caff\caff_animation.obj: caff\caff_animation.cpp.obj
+.PHONY : caff\caff_animation.obj
+
+# target to build an object file
+caff\caff_animation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff\caff_animation.cpp.obj
+.PHONY : caff\caff_animation.cpp.obj
+
+caff\caff_animation.i: caff\caff_animation.cpp.i
+.PHONY : caff\caff_animation.i
+
+# target to preprocess a source file
+caff\caff_animation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff\caff_animation.cpp.i
+.PHONY : caff\caff_animation.cpp.i
+
+caff\caff_animation.s: caff\caff_animation.cpp.s
+.PHONY : caff\caff_animation.s
+
+# target to generate assembly for a file
+caff\caff_animation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff\caff_animation.cpp.s
+.PHONY : caff\caff_animation.cpp.s
+
+caff\caff_credits.obj: caff\caff_credits.cpp.obj
+.PHONY : caff\caff_credits.obj
+
+# target to build an object file
+caff\caff_credits.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff\caff_credits.cpp.obj
+.PHONY : caff\caff_credits.cpp.obj
+
+caff\caff_credits.i: caff\caff_credits.cpp.i
+.PHONY : caff\caff_credits.i
+
+# target to preprocess a source file
+caff\caff_credits.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff\caff_credits.cpp.i
+.PHONY : caff\caff_credits.cpp.i
+
+caff\caff_credits.s: caff\caff_credits.cpp.s
+.PHONY : caff\caff_credits.s
+
+# target to generate assembly for a file
+caff\caff_credits.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff\caff_credits.cpp.s
+.PHONY : caff\caff_credits.cpp.s
+
+caff\caff_header.obj: caff\caff_header.cpp.obj
+.PHONY : caff\caff_header.obj
+
+# target to build an object file
+caff\caff_header.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff\caff_header.cpp.obj
+.PHONY : caff\caff_header.cpp.obj
+
+caff\caff_header.i: caff\caff_header.cpp.i
+.PHONY : caff\caff_header.i
+
+# target to preprocess a source file
+caff\caff_header.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff\caff_header.cpp.i
+.PHONY : caff\caff_header.cpp.i
+
+caff\caff_header.s: caff\caff_header.cpp.s
+.PHONY : caff\caff_header.s
+
+# target to generate assembly for a file
+caff\caff_header.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CAFFParser.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CAFFParser.dir\caff\caff_header.cpp.s
+.PHONY : caff\caff_header.cpp.s
+
 caff_parser.obj: caff_parser.cpp.obj
 .PHONY : caff_parser.obj
 
@@ -175,6 +271,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... CAFFParser
+	@echo ... caff/caff.obj
+	@echo ... caff/caff.i
+	@echo ... caff/caff.s
+	@echo ... caff/caff_animation.obj
+	@echo ... caff/caff_animation.i
+	@echo ... caff/caff_animation.s
+	@echo ... caff/caff_credits.obj
+	@echo ... caff/caff_credits.i
+	@echo ... caff/caff_credits.s
+	@echo ... caff/caff_header.obj
+	@echo ... caff/caff_header.i
+	@echo ... caff/caff_header.s
 	@echo ... caff_parser.obj
 	@echo ... caff_parser.i
 	@echo ... caff_parser.s

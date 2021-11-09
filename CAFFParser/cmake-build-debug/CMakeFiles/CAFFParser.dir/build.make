@@ -93,19 +93,103 @@ CMakeFiles\CAFFParser.dir\main.cpp.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\CAFFParser.dir\main.cpp.s /c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\main.cpp
 <<
 
+CMakeFiles\CAFFParser.dir\caff\caff.cpp.obj: CMakeFiles\CAFFParser.dir\flags.make
+CMakeFiles\CAFFParser.dir\caff\caff.cpp.obj: ..\caff\caff.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CAFFParser.dir/caff/caff.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\CAFFParser.dir\caff\caff.cpp.obj /FdCMakeFiles\CAFFParser.dir\CAFFParser.pdb /FS -c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff\caff.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\caff\caff.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CAFFParser.dir/caff/caff.cpp.i"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\CAFFParser.dir\caff\caff.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff\caff.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\caff\caff.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CAFFParser.dir/caff/caff.cpp.s"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\CAFFParser.dir\caff\caff.cpp.s /c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff\caff.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\caff\caff_header.cpp.obj: CMakeFiles\CAFFParser.dir\flags.make
+CMakeFiles\CAFFParser.dir\caff\caff_header.cpp.obj: ..\caff\caff_header.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CAFFParser.dir/caff/caff_header.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\CAFFParser.dir\caff\caff_header.cpp.obj /FdCMakeFiles\CAFFParser.dir\CAFFParser.pdb /FS -c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff\caff_header.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\caff\caff_header.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CAFFParser.dir/caff/caff_header.cpp.i"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\CAFFParser.dir\caff\caff_header.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff\caff_header.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\caff\caff_header.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CAFFParser.dir/caff/caff_header.cpp.s"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\CAFFParser.dir\caff\caff_header.cpp.s /c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff\caff_header.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\caff\caff_credits.cpp.obj: CMakeFiles\CAFFParser.dir\flags.make
+CMakeFiles\CAFFParser.dir\caff\caff_credits.cpp.obj: ..\caff\caff_credits.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/CAFFParser.dir/caff/caff_credits.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\CAFFParser.dir\caff\caff_credits.cpp.obj /FdCMakeFiles\CAFFParser.dir\CAFFParser.pdb /FS -c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff\caff_credits.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\caff\caff_credits.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CAFFParser.dir/caff/caff_credits.cpp.i"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\CAFFParser.dir\caff\caff_credits.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff\caff_credits.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\caff\caff_credits.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CAFFParser.dir/caff/caff_credits.cpp.s"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\CAFFParser.dir\caff\caff_credits.cpp.s /c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff\caff_credits.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\caff\caff_animation.cpp.obj: CMakeFiles\CAFFParser.dir\flags.make
+CMakeFiles\CAFFParser.dir\caff\caff_animation.cpp.obj: ..\caff\caff_animation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/CAFFParser.dir/caff/caff_animation.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\CAFFParser.dir\caff\caff_animation.cpp.obj /FdCMakeFiles\CAFFParser.dir\CAFFParser.pdb /FS -c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff\caff_animation.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\caff\caff_animation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CAFFParser.dir/caff/caff_animation.cpp.i"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\CAFFParser.dir\caff\caff_animation.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff\caff_animation.cpp
+<<
+
+CMakeFiles\CAFFParser.dir\caff\caff_animation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CAFFParser.dir/caff/caff_animation.cpp.s"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\CAFFParser.dir\caff\caff_animation.cpp.s /c C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\caff\caff_animation.cpp
+<<
+
 # Object files for target CAFFParser
 CAFFParser_OBJECTS = \
 "CMakeFiles\CAFFParser.dir\caff_parser.cpp.obj" \
-"CMakeFiles\CAFFParser.dir\main.cpp.obj"
+"CMakeFiles\CAFFParser.dir\main.cpp.obj" \
+"CMakeFiles\CAFFParser.dir\caff\caff.cpp.obj" \
+"CMakeFiles\CAFFParser.dir\caff\caff_header.cpp.obj" \
+"CMakeFiles\CAFFParser.dir\caff\caff_credits.cpp.obj" \
+"CMakeFiles\CAFFParser.dir\caff\caff_animation.cpp.obj"
 
 # External object files for target CAFFParser
 CAFFParser_EXTERNAL_OBJECTS =
 
 CAFFParser.lib: CMakeFiles\CAFFParser.dir\caff_parser.cpp.obj
 CAFFParser.lib: CMakeFiles\CAFFParser.dir\main.cpp.obj
+CAFFParser.lib: CMakeFiles\CAFFParser.dir\caff\caff.cpp.obj
+CAFFParser.lib: CMakeFiles\CAFFParser.dir\caff\caff_header.cpp.obj
+CAFFParser.lib: CMakeFiles\CAFFParser.dir\caff\caff_credits.cpp.obj
+CAFFParser.lib: CMakeFiles\CAFFParser.dir\caff\caff_animation.cpp.obj
 CAFFParser.lib: CMakeFiles\CAFFParser.dir\build.make
 CAFFParser.lib: CMakeFiles\CAFFParser.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library CAFFParser.lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Munka\bme\biztonsag\szamitogep-biztonsag-hf\CAFFParser\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library CAFFParser.lib"
 	$(CMAKE_COMMAND) -P CMakeFiles\CAFFParser.dir\cmake_clean_target.cmake
 	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\lib.exe /nologo /machine:X86 /out:CAFFParser.lib @CMakeFiles\CAFFParser.dir\objects1.rsp 
 

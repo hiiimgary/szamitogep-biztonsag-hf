@@ -84,6 +84,30 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff/caff.cpp">
+			<Option target="CAFFParser"/>
+		</Unit>
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff/caff.h">
+			<Option target="CAFFParser"/>
+		</Unit>
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff/caff_animation.cpp">
+			<Option target="CAFFParser"/>
+		</Unit>
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff/caff_animation.h">
+			<Option target="CAFFParser"/>
+		</Unit>
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff/caff_credits.cpp">
+			<Option target="CAFFParser"/>
+		</Unit>
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff/caff_credits.h">
+			<Option target="CAFFParser"/>
+		</Unit>
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff/caff_header.cpp">
+			<Option target="CAFFParser"/>
+		</Unit>
+		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff/caff_header.h">
+			<Option target="CAFFParser"/>
+		</Unit>
 		<Unit filename="C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/caff_parser.cpp">
 			<Option target="CAFFParser"/>
 		</Unit>
