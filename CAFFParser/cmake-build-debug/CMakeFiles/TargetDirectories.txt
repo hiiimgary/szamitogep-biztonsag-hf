@@ -1,3 +1,0 @@
-C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/cmake-build-debug/CMakeFiles/CAFFParser.dir
-C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Munka/bme/biztonsag/szamitogep-biztonsag-hf/CAFFParser/cmake-build-debug/CMakeFiles/rebuild_cache.dir
