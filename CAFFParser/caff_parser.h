@@ -1,6 +1,0 @@
-#ifndef CAFFPARSER_CAFF_PARSER_H
-#define CAFFPARSER_CAFF_PARSER_H
-
-void hello();
-
-#endif //CAFFPARSER_CAFF_PARSER_H
