@@ -1,6 +1,8 @@
 # files managed by CLion
 CAFFParser/.idea/*
 CAFFParser/cmake-build-debug/*
+.idea/*
+cmake-build-debug/*
 CAFFParser/CMakeLists.txt
 .idea/*
 cmake-build-debug/*

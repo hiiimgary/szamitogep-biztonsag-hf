@@ -9,8 +9,6 @@
 void fileReader(string input_file);
 /// helpers
 vector<char> trim(vector<char> in, uint64_t from, uint64_t to);
-
-uint64_t toInt(const vector<char>& in);
-char* vectorToString(vector<char> in);
+uint64_t toUint64(vector<char> numAsCharVec);
 
 #endif //CAFFPARSER_FILE_TO_CAFF_H
