@@ -5,10 +5,6 @@
 #include "caff_header.h"
 
 
-const char *CaffHeader::getMagic() const {
-    return magic;
-}
-
 uint64_t CaffHeader::getHeaderSize() const {
     return header_size;
 }
@@ -23,8 +19,4 @@ void CaffHeader::setHeaderSize(uint64_t headerSize) {
 
 void CaffHeader::setNumberOfAnimations(uint64_t numberOfAnimations) {
     number_of_animations = numberOfAnimations;
-}
-
-void CaffHeader::setMagic(char *magic) {
-
 }

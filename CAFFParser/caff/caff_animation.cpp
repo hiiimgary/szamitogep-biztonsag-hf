@@ -4,6 +4,13 @@
 
 #include "caff_animation.h"
 
+CaffAnimation::CaffAnimation() {
+//    ciff = nullptr;
+    duration = 0;
+}
+
+CaffAnimation::~CaffAnimation() {}
+
 void CaffAnimation::setDuration(uint64_t d) {
 
 }
@@ -12,10 +19,10 @@ uint64_t CaffAnimation::getDuration() {
     return 0;
 }
 
-void CaffAnimation::setCiff(Ciff *c) {
-
-}
-
-Ciff *CaffAnimation::getCiff() {
-    return nullptr;
-}
+//void CaffAnimation::setCiff(Ciff *c) {
+//
+//}
+//
+//Ciff *CaffAnimation::getCiff() {
+//    return nullptr;
+//}

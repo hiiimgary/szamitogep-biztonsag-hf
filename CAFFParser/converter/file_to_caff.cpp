@@ -11,8 +11,8 @@
 Caff* fileReader(string input_file) {
     /// open filestream
     ifstream input;
-    input.open(input_file);
-    if (!input) throw "input file could not be opened, exiting...\n";
+    input.open(input_file, ios::in | ios::binary);
+    if (!input.is_open()) throw "input file could not be opened, exiting...\n";
 
     /// read data into bytes
     streampos start = input.tellg();
