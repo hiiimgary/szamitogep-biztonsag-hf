@@ -85,3 +85,11 @@ void Caff::parseHeader(const vector<char>& block, uint64_t block_length) {
     header.setNumberOfAnimations(num_anim);
 }
 
+void Caff::parseCredits(vector<char> block, uint64_t block_length) {
+
+}
+
+void Caff::parseAnimation(const vector<char> &block, uint64_t block_length) {
+
+}
+

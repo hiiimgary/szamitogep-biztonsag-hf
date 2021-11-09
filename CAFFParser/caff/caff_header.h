@@ -5,24 +5,26 @@
 #ifndef CAFFPARSER_CAFF_HEADER_H
 #define CAFFPARSER_CAFF_HEADER_H
 
+#include <cstdint>
+
 class CaffHeader {
 private:
-    char magic[5];
-    uint64_t header_size;
-    uint64_t number_of_animations;
+    char magic[5]{};
+    uint64_t header_size{};
+    uint64_t number_of_animations{};
 
 public:
-    CaffHeader();
-    ~CaffHeader();
+    const char *getMagic() const;
 
-    void setMagic(char* m);
-    char* getMagic();
+    uint64_t getHeaderSize() const;
 
-    void setHeaderSize(uint64_t header_s);
-    uint64_t getHeaderSize();
+    uint64_t getNumberOfAnimations() const;
 
-    void setNumberOfAnimations(uint64_t num_of_animations);
-    uint64_t getNumberOfAnimations();
+    void setMagic(char* magic);
+
+    void setHeaderSize(uint64_t headerSize);
+
+    void setNumberOfAnimations(uint64_t numberOfAnimations);
 };
 
 #endif //CAFFPARSER_CAFF_HEADER_H
