@@ -15,6 +15,8 @@ private:
 public:
     CiffHeader getHeader();
     CiffContent getContent();
+
+    void saveCiffPartsToVariables(std::vector<char> animation);
 };
 
 #endif //CAFFPARSER_CIFF_H

@@ -3,6 +3,11 @@
 //
 
 #include "ciff_header.h"
+#include <cstring>
+
+void CiffHeader::setMagic(char* magic) {
+    strncpy(magic, magic, 4);
+}
 
 uint64_t CiffHeader::getHeaderSize() const {
     return header_size;
@@ -51,3 +56,11 @@ void CiffHeader::setCaption(const std::string &caption) {
 void CiffHeader::setTags(const std::vector<std::string> &tags) {
     CiffHeader::tags = tags;
 }
+
+CiffHeader::CiffHeader() {
+
+}
+
+CiffHeader::~CiffHeader() {}
+
+

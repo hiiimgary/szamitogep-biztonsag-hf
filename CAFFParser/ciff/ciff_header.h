@@ -19,6 +19,12 @@ private:
     std::string caption;
     std::vector<std::string> tags;
 public:
+    CiffHeader();
+
+    ~CiffHeader();
+
+    void setMagic(char* magic);
+
     uint64_t getHeaderSize() const;
 
     uint64_t getContentSize() const;
