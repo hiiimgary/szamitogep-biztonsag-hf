@@ -11,19 +11,11 @@
 #include "caff_header.h"
 #include "caff_animation.h"
 
-using namespace std;
-
 class Caff {
 private:
     CaffHeader header;
     CaffCredits credits;
     vector<CaffAnimation> animations;
-
-    vector<char> slice(vector<char> const& in, uint64_t from, uint64_t to);
-    char* vectorToString(vector<char> in);
-    uint64_t vectorToInt(const vector<char>& in);
-
-
 
 public:
     Caff();
