@@ -1,0 +1,7 @@
+# files managed by CLion
+CAFFParser/.idea/*
+CAFFParser/cmake-build-debug/*
+.idea/*
+cmake-build-debug/*
+.idea/*
+cmake-build-debug/*
