@@ -5,10 +5,6 @@
 #include "ciff_header.h"
 #include <cstring>
 
-void CiffHeader::setMagic(char* magic) {
-    strncpy(magic, magic, 4);
-}
-
 uint64_t CiffHeader::getHeaderSize() const {
     return header_size;
 }

@@ -3,6 +3,7 @@
 //
 
 #include "caff.h"
+#include "../ciff/ciff.h"
 #include <fstream>
 #include <string.h>
 #include "../data_manipulation/helper.h"
@@ -79,11 +80,11 @@ void Caff::parseAnimation(const vector<char> &block, uint64_t block_length) {
 
     vector<char> animation = trim(block, 8, block_length - 1);
 
-//    Ciff* ciff = new Ciff();
-//    ciff->saveCiffPartsToVariables(animation);
-//    caffAnimation.setCiff(ciff);
-//
-//    animations.push_back(caffAnimation);
+    Ciff* ciff = new Ciff();
+    ciff->saveCiffPartsToVariables(animation);
+    caffAnimation.setCiff(ciff);
+
+    animations.push_back(caffAnimation);
 }
 
 vector<CaffAnimation> Caff::getCaffAnimations() {

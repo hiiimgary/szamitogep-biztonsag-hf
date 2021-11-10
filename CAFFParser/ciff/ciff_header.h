@@ -11,7 +11,6 @@
 
 class CiffHeader {
 private:
-    char magic[4] {};
     uint64_t header_size{};
     uint64_t content_size{};
     uint64_t width{};
@@ -22,8 +21,6 @@ public:
     CiffHeader();
 
     ~CiffHeader();
-
-    void setMagic(char* magic);
 
     uint64_t getHeaderSize() const;
 
