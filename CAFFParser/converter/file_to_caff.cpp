@@ -28,7 +28,7 @@ Caff* fileReader(string input_file) {
     Caff* caff = new Caff();
     int i = 0;
     while (i < contents.size()) {
-        uint64_t block_length = vectorToInt(trim(contents, i + 1, i + 9));
+        uint64_t block_length = toInt(trim(contents, i + 1, i + 9));
         vector<char> block = trim(contents, i + 9, i + 9 + block_length);
         switch (contents[i]){
             case 1:
@@ -67,7 +67,7 @@ uint64_t toInt(const vector<char>& data) {
         tmp[i] = data[i];
     }
     tmp[size] = '\0';
-    uint64_t n = ((uint64_t)tmp);
+    uint64_t n = *((uint64_t*)tmp);
     delete[] tmp;
     return n;
 }
