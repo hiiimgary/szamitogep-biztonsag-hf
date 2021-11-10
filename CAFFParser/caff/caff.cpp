@@ -3,9 +3,8 @@
 //
 
 #include "caff.h"
-#include "../ciff/ciff.h"
 #include <fstream>
-#include <string.h>
+#include <cstring>
 #include "../data_manipulation/helper.h"
 
 using namespace std;
@@ -13,9 +12,9 @@ using namespace std;
 Caff::Caff() : header(CaffHeader()), credits(CaffCredits()), animations(vector<CaffAnimation>()) {}
 
 Caff::~Caff() {
-//    for (int i = 0; i < animations.size(); i++) {
-//        delete animations.at(i).getCiff();
-//    }
+    for (int i = 0; i < animations.size(); i++) {
+        delete animations.at(i).getCiff();
+    }
 }
 
 void Caff::parseHeader(const vector<char>& block, uint64_t block_length) {

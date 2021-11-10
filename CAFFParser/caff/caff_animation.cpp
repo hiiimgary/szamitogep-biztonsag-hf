@@ -5,7 +5,6 @@
 #include "caff_animation.h"
 
 CaffAnimation::CaffAnimation() {
-//    ciff = nullptr;
     duration = 0;
 }
 
