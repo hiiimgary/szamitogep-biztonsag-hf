@@ -4,8 +4,8 @@
 
 #include <cstdio>
 #include "caff/caff.h"
-#include "converter/file_to_caff.h"
-#include "converter/caff_to_gif.h"
+#include "converter/file_to_caff.hpp"
+#include "converter/caff_to_gif.hpp"
 
 int main(int argc, const char** argv) {
     /// read arguments

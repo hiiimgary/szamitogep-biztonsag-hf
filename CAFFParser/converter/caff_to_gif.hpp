@@ -2,6 +2,9 @@
 // Created by paulg on 2021. 11. 09..
 //
 
+#ifndef CAFFPARSER_CAFF_TO_GIF_H
+#define CAFFPARSER_CAFF_TO_GIF_H
+
 #include <vector>
 #include <cstdint>
 #include "../caff/caff.h"
@@ -46,3 +49,5 @@ void fileWriter(Caff* caff, const char *output_file) {
     /// free up memory space
     delete caff;
 }
+
+#endif //CAFFPARSER_CAFF_TO_GIF_H

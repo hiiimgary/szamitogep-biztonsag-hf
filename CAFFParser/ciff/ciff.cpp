@@ -7,7 +7,7 @@
 #include "ciff.h"
 #include <cstring>
 
-#include "../data_manipulation/helper.h"
+#include "../helper/help.h"
 
 CiffHeader Ciff::getHeader() {
     return header;
