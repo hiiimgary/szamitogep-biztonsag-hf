@@ -15,7 +15,7 @@ private:
 
     uint64_t parseCaption(std::vector<char> in, uint64_t from);
     void parseTags(std::vector<char> in, uint64_t from, uint64_t to);
-    void parseContent(std::vector<char> in, uint64_t from, uint64_t to, uint64_t width, uint64_t height);
+    void parseContent(std::vector<char> in, uint64_t from, uint64_t to, uint64_t width);
 public:
     CiffHeader getHeader();
     CiffContent getContent();

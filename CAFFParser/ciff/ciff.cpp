@@ -22,20 +22,23 @@ void Ciff::saveCiffPartsToVariables(std::vector<char> animation) {
     header.setMagic(vectorToString(trim(animation, 0, 3)));
 
     // Setting header size
-    header.setHeaderSize(toInt(trim(animation, 4, 11)));
+    uint64_t header_size = toInt(trim(animation, 4, 11));
+    header.setHeaderSize(header_size);
 
     // Setting content size
     header.setContentSize(toInt(trim(animation, 12, 19)));
 
     // Setting width and height
-    header.setWidth(toInt(trim(animation, 20, 27)));
-    header.setHeight(toInt(trim(animation, 28, 35)));
+    uint64_t header_width = toInt(trim(animation, 20, 27));
+    uint64_t header_height = toInt(trim(animation, 20, 27));
+    header.setWidth(header_width);
+    header.setHeight(header_height);
 
-//    uint64_t index = parseCaption(animation, 36);
-//
-//    parseTags(animation, index + 1, header_size);
-//
-//    parseContent(animation, header_size, animation.size(), width, height);
+    uint64_t index = parseCaption(animation, 36);
+
+    parseTags(animation, index + 1, header_size);
+
+    parseContent(animation, header_size, animation.size(), header_width);
 
 
 }
@@ -62,9 +65,43 @@ uint64_t Ciff::parseCaption(std::vector<char> in, uint64_t from) {
 }
 
 void Ciff::parseTags(std::vector<char> in, uint64_t from, uint64_t to) {
+    std::vector<std::string> tags;
+    char* tmp = new char[to - from];
+    uint64_t index = 0;
 
+    for (uint64_t i = from; i < to; i++, index++) {
+        tmp[index] = in[i];
+        if (in[i] == '\0') {
+            tags.emplace_back(tmp);
+            index = -1;
+        }
+    }
+
+    delete[] tmp;
+
+    header.setTags(tags);
 }
 
-void Ciff::parseContent(std::vector<char> in, uint64_t from, uint64_t to, uint64_t width, uint64_t height) {
+void Ciff::parseContent(std::vector<char> in, uint64_t from, uint64_t to, uint64_t width) {
+    uint64_t row = 0;
+    uint64_t col = 0;
 
+    std::vector<RGB> pixel_row;
+    std::vector <std::vector<RGB>> rows;
+
+    for (uint64_t i = from; i < to; i += 3, col++) {
+        if (width <= col) {
+            row++;
+            col = 0;
+            rows.push_back(pixel_row);
+            pixel_row.clear();
+        }
+
+        RGB rgb(in[i], in[i+1], in[i+2]);
+
+        pixel_row.push_back(rgb);
+    }
+
+    rows.push_back(pixel_row);
+    content.setPixels(rows);
 }

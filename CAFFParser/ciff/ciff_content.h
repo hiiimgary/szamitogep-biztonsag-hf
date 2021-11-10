@@ -12,16 +12,18 @@ struct RGB {
     uint8_t R{};
     uint8_t G{};
     uint8_t B{};
+
+    RGB(uint8_t r, uint8_t g, uint8_t b);
 };
 
 class CiffContent {
 private:
-    std::vector<RGB> pixels;
+    std::vector<std::vector<RGB>> pixels;
 
 public:
-    const std::vector<RGB> &getPixels() const;
+    const std::vector<std::vector<RGB>> &getPixels() const;
 
-    void setPixels(const std::vector<RGB> &pixels);
+    void setPixels(const std::vector<std::vector<RGB>> &pixels);
 
 };
 
