@@ -85,8 +85,8 @@ void Ciff::parseTags(std::vector<char> in, uint64_t from, uint64_t to) {
         }
     }
 
+    printf("TAGS: %s\n", tmp);
     delete[] tmp;
-
     header.setTags(tags);
 }
 

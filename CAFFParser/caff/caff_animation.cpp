@@ -12,7 +12,7 @@ CaffAnimation::CaffAnimation() {
 CaffAnimation::~CaffAnimation() {}
 
 void CaffAnimation::setDuration(uint64_t d) {
-
+    duration = d;
 }
 
 uint64_t CaffAnimation::getDuration() {
