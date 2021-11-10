@@ -3,10 +3,9 @@
 //
 
 #include "caff.h"
-#include "../ciff/ciff.h"
 #include <fstream>
 #include <string.h>
-#include "../data_manipulation/helper.h"
+#include "../helper/help.h"
 
 using namespace std;
 

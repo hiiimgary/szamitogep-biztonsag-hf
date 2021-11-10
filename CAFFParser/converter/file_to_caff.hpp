@@ -2,12 +2,14 @@
 // Created by paulg on 2021. 11. 09..
 //
 
+#ifndef CAFFPARSER_FILE_TO_CAFF_H
+#define CAFFPARSER_FILE_TO_CAFF_H
+
 #include <vector>
 #include <cstdint>
 #include <fstream>
 #include "../caff/caff.h"
-#include "file_to_caff.h"
-#include "../data_manipulation/helper.h"
+#include "../helper/help.h"
 
 Caff* fileReader(const char* input_file) {
     /// open filestream
@@ -51,3 +53,5 @@ Caff* fileReader(const char* input_file) {
     printf("end of file reached, closing stream...\n");
     return caff;
 }
+
+#endif //CAFFPARSER_FILE_TO_CAFF_H
