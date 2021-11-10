@@ -5,7 +5,7 @@
 #include "ciff_header.h"
 #include "ciff_content.h"
 #include "ciff.h"
-#include <string.h>
+#include <cstring>
 
 #include "../data_manipulation/helper.h"
 
@@ -90,9 +90,7 @@ void Ciff::parseTags(std::vector<char> in, uint64_t from, uint64_t to) {
     header.setTags(tags);
 }
 
-<<<<<<< HEAD
 void Ciff::parseContent(std::vector<char> in, uint64_t from, uint64_t to, uint64_t width) {
-    uint64_t row = 0;
     uint64_t col = 0;
 
     std::vector<RGB> pixel_row;
@@ -100,7 +98,6 @@ void Ciff::parseContent(std::vector<char> in, uint64_t from, uint64_t to, uint64
 
     for (uint64_t i = from; i < to; i += 3, col++) {
         if (width <= col) {
-            row++;
             col = 0;
             rows.push_back(pixel_row);
             pixel_row.clear();
@@ -112,31 +109,4 @@ void Ciff::parseContent(std::vector<char> in, uint64_t from, uint64_t to, uint64
     }
 
     rows.push_back(pixel_row);
-=======
-void Ciff::parseContent(std::vector<char> in, uint64_t from, uint64_t to, uint64_t width, uint64_t height) {
-    uint64_t row = 0;
-    uint64_t col = 0;
-
-    std::vector<RGB> current_row;
-    std::vector <std::vector<RGB>> rows;
-
-    for (uint64_t i = from; i < to; i += 3, col++) {
-        if (col == width) {
-            row++;
-            col = 0;
-            rows.push_back(current_row);
-            current_row.clear();
-        }
-
-        RGB rgb;
-        rgb.R = in[i];
-        rgb.G = in[i + 1];
-        rgb.B = in[i + 2];
-
-        current_row.push_back(rgb);
-    }
-
-    rows.push_back(current_row);
->>>>>>> 574e15d927e424816278b80276af665a09de71a2
-    content.setPixels(rows);
 }
