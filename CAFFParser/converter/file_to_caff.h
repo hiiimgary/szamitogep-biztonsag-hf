@@ -9,6 +9,6 @@
 #include <cstring>
 #include "../caff/caff.h"
 
-Caff* fileReader(string input_file);
+Caff* fileReader(const char* input_file);
 
 #endif //CAFFPARSER_FILE_TO_CAFF_H

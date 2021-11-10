@@ -9,16 +9,17 @@
 
 int main(int argc, const char** argv) {
     /// read arguments
-//    if (argc < 3) {
-//        printf("insufficient number of arguments, exiting...\n");
-//        return -1;
-//    }
-//    string input_file = argv[1];
-//    string output_file = argv[2];
+    if (argc < 3) {
+        printf("insufficient number of arguments, exiting...\n");
+        return -1;
+    }
+    const char* input_file = argv[1];
+    const char* output_file = argv[2];
 
+    /// convert caff to gif
     try {
-        Caff* caff = fileReader("../samples/1.caff");
-        fileWriter(caff, "best_gif_ever.gif");
+        Caff* caff = fileReader(input_file);
+        fileWriter(caff, output_file);
     }
     catch (const std::exception& e) {
         printf("%s\n", &e);

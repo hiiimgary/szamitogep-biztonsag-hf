@@ -9,7 +9,7 @@
 #include "file_to_caff.h"
 #include "../data_manipulation/helper.h"
 
-Caff* fileReader(string input_file) {
+Caff* fileReader(const char* input_file) {
     /// open filestream
     ifstream input;
     input.open(input_file, ios::in | ios::binary);
