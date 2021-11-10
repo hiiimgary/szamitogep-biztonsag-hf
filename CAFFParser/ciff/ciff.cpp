@@ -109,4 +109,5 @@ void Ciff::parseContent(std::vector<char> in, uint64_t from, uint64_t to, uint64
     }
 
     rows.push_back(pixel_row);
+    content.setPixels(rows);
 }
