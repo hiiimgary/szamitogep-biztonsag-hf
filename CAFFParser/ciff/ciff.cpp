@@ -38,7 +38,7 @@ void Ciff::saveCiffPartsToVariables(std::vector<char> animation) {
 
     // Setting width and height
     uint64_t header_width = toInt(trim(animation, 20, 27));
-    uint64_t header_height = toInt(trim(animation, 20, 27));
+    uint64_t header_height = toInt(trim(animation, 28, 35));
     header.setWidth(header_width);
     header.setHeight(header_height);
 
