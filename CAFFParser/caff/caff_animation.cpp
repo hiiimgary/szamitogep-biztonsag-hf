@@ -16,7 +16,7 @@ void CaffAnimation::setDuration(uint64_t d) {
 }
 
 uint64_t CaffAnimation::getDuration() {
-    return 0;
+    return duration;
 }
 
 void CaffAnimation::setCiff(Ciff *c) {
