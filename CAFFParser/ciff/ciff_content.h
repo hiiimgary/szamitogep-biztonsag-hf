@@ -16,12 +16,12 @@ struct RGB {
 
 class CiffContent {
 private:
-    std::vector<RGB> pixels;
+    std::vector<std::vector<RGB>> pixels;
 
 public:
-    const std::vector<RGB> &getPixels() const;
+    const std::vector<std::vector<RGB>> &getPixels() const;
 
-    void setPixels(const std::vector<RGB> &pixels);
+    void setPixels(const std::vector<std::vector<RGB>> &pixels);
 
 };
 

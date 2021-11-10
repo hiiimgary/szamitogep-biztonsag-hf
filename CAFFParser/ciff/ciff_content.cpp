@@ -4,10 +4,10 @@
 
 #include "ciff_content.h"
 
-const std::vector<RGB> &CiffContent::getPixels() const {
+const std::vector<std::vector<RGB>> &CiffContent::getPixels() const {
     return pixels;
 }
 
-void CiffContent::setPixels(const std::vector<RGB> &pixels) {
+void CiffContent::setPixels(const std::vector<std::vector<RGB>>& pixels) {
     CiffContent::pixels = pixels;
 }
