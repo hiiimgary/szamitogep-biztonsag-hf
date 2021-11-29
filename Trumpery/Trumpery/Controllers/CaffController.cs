@@ -1,0 +1,164 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using Trumpery.Controllers.Policies;
+using Trumpery.Data;
+using Trumpery.Models;
+
+namespace Trumpery.Controllers
+{
+    [Route("api/caff")]
+    [ApiController]
+    [Authorize]
+    public class CaffController : AuthenticableControllerBase
+    {
+        private readonly TrumperyContext _context;
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        CaffController(TrumperyContext context, IWebHostEnvironment environment)
+        {
+            _context = context;
+            _hostingEnvironment = environment;
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<Caff>> Index()
+        {
+            return _context.Caffs;
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<Caff>> Search(string keywords)
+        {
+            return (List<Caff>)_context.Caffs.Where(c => MatchingSearch(c, keywords));
+        }
+
+        private bool MatchingSearch(Caff caff, string keywords)
+        {
+            List<string> splitWords = keywords.Split("_").ToList();
+            List<string> lowerSplitWords = splitWords.ConvertAll(w => w.ToLower());
+            foreach (string w in lowerSplitWords)
+            {
+                if (caff.Author.ToLower().Contains(w)) return true;
+                if (caff.Description.ToLower().Contains(w)) return true;
+                if (caff.Tags.ConvertAll(t => t.ToLower()).Any(w.Contains)) return true;
+            }
+            return false;
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<Object>> Show(int id)
+        {
+            Caff caff = _context.Caffs.FirstOrDefault(c => c.Id == id);
+            if (caff == null) return NotFound();
+            List<Object> caffWithComments = new List<object>();
+            caffWithComments.Add(caff);
+            caffWithComments.AddRange(_context.Comments.Where(c => c.Caff.Id == id));
+            return caffWithComments;
+        }
+
+        [HttpPost]
+        public IActionResult Upload(IFormFile file)
+        {
+            /// upload caff file
+            var caff_folder = Path.Combine(_hostingEnvironment.WebRootPath, "caff");
+            var gif_folder = Path.Combine(_hostingEnvironment.WebRootPath, "gif");
+            if (!Directory.Exists(caff_folder)) Directory.CreateDirectory(caff_folder);
+            if (!Directory.Exists(gif_folder)) Directory.CreateDirectory(gif_folder);
+            if (file.Length <= 0) return BadRequest();
+            string filename = UniqueRandomString32();
+            string caff_path = Path.Combine(caff_folder, filename, ".caff");
+            string gif_path = Path.Combine(gif_folder, filename, ".gif");
+            using (var fileStream = new FileStream(caff_path, FileMode.Create))
+            {
+                file.CopyTo(fileStream);
+            }
+            /// create gif file
+            var process = new Process();
+            process.StartInfo.FileName = "run.exe";
+            process.StartInfo.Arguments = caff_path + " " + gif_path;
+            ///[TODO]
+
+            /// create db entity
+            Caff caff = new Caff();
+            caff.Author = "";
+            caff.Description = "";
+            caff.TagsRaw = "";
+            caff.CaffFilePath = caff_path;
+            caff.GifFilePath = gif_path;
+            _context.Caffs.Add(caff);
+            _context.SaveChanges();
+            return CreatedAtAction("Show", new { id = caff.Id }, caff);
+        }
+
+        private string UniqueRandomString32()
+        {
+            var caff_folder = Path.Combine(_hostingEnvironment.WebRootPath, "caff");
+            List<string> existingRandoms = new List<string>();
+            foreach (string filename in Directory.GetFiles(caff_folder))
+            {
+                existingRandoms.Add(new string(filename.Take(32).ToArray()));
+            }
+
+            Random rng = new Random();
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            string uniqueRandom = "";
+            do
+            {
+                uniqueRandom = new string(Enumerable.Repeat(chars, 32).Select(s => s[rng.Next(s.Length)]).ToArray());
+            } while (!existingRandoms.Contains(uniqueRandom));
+            return uniqueRandom;
+        }
+
+        [HttpPost]
+        public IActionResult Download(int id)
+        {
+            Caff caff = _context.Caffs.FirstOrDefault(c => c.Id == id);
+            if (caff == null) return NotFound();
+            var caff_folder = Path.Combine(_hostingEnvironment.WebRootPath, "caff");
+            var file = caff.CaffFilePath;
+            var filePath = Path.Combine(caff_folder, file);
+            if (!System.IO.File.Exists(filePath)) return NotFound();
+            
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(filePath, FileMode.Open))
+            {
+                stream.CopyTo(memory);
+            }
+            memory.Position = 0;
+            return File(memory, GetContentType(filePath), file);
+        }
+
+        private string GetContentType(string path)
+        {
+            var provider = new FileExtensionContentTypeProvider();
+            string contentType;
+            if (!provider.TryGetContentType(path, out contentType))
+            {
+                contentType = "application/octet-stream";
+            }
+            return contentType;
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            if (!IsAdmin(_context)) return Unauthorized();
+            var caff = _context.Caffs.Find(id);
+            if (caff == null) return NotFound();
+            var caff_folder = Path.Combine(_hostingEnvironment.WebRootPath, "caff");
+            var gif_folder = Path.Combine(_hostingEnvironment.WebRootPath, "gif");
+            System.IO.File.Delete(Path.Combine(caff_folder, caff.CaffFilePath));
+            System.IO.File.Delete(Path.Combine(gif_folder, caff.GifFilePath));
+            _context.Caffs.Remove(caff);
+            _context.SaveChanges();
+            return NoContent();
+        }
+    }
+}
