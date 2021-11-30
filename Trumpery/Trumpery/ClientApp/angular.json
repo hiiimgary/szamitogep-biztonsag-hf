@@ -133,6 +133,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "trumpery-frontend"
+    }
+  },
+  "defaultProject": "trumpery-frontend",
+  "cli": {
+    "analytics": false
+  }
 }

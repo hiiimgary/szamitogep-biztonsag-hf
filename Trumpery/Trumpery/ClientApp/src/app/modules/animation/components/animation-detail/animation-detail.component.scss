@@ -1,0 +1,107 @@
+@import 'shared';
+
+.detail-page {
+    padding-bottom: 50px;
+    .animation-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        .animation {
+            max-height: 80vh;
+            width: 100%;
+            border-radius: 10px;
+        }
+    }
+    .content {
+        color: $light;
+        padding: 16px 8px 0;
+        .author {
+            margin-bottom: 8px;
+        }
+        .description {
+            font-size: 14px;
+            text-align: justify;
+            margin-bottom: 8px;
+        }
+        .tags {
+            font-size: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            span {
+                margin-right: 5px;
+                margin-bottom: 5px;
+                background-color: $accent;
+                color: $light;
+                padding: 2px 8px;
+                border-radius: 4px;
+            }
+        }
+        .date {
+            text-align: right;
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 16px 0;
+        }
+    }
+
+    .add-comment {
+        background-color: $secondary-light;
+        padding: 15px 30px 15px;
+        border-radius: 5px;
+        margin-bottom: 40px;
+        &::ng-deep {
+            label {
+                color: $light;
+            }
+            textarea {
+                background-color: transparent;
+                border: 1px solid $light;
+                border-radius: 5px;
+                padding: 5px 10px;
+                resize: none;
+                color: $light;
+            }
+        }
+        .btn-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            .btn {
+                height: 45px;
+                font-size: 18px;
+                font-weight: 500;
+                width: 200px;
+                background-color: $accent;
+                color: $white;
+                border-radius: 15px;
+                transition: 0.1s ease;
+                &:hover {
+                    background-color: $primary;
+                }
+            }
+        }
+
+    }
+    .comments {
+        .comment {
+            position: relative;
+            margin-bottom: 30px;
+            background-color: $secondary-light;
+            padding: 25px 30px 15px;
+            border-radius: 5px;
+            .user {
+                position: absolute;
+                top: -10px;
+                left: 20px;
+                background-color: $accent;
+                padding: 5px 15px;
+                font-weight: 700;
+                margin-bottom: 5px;
+                border-radius: 5px;
+            }
+            .text {
+                color: $light;
+            }
+        }
+    }
+}

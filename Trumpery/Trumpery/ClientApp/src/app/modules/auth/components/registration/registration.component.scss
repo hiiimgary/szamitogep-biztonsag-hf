@@ -1,0 +1,35 @@
+@import 'shared';
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-card {
+    width: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    .header {
+        background-color: rgba($primary, 0.9);
+        color: $white;
+        padding: 30px;
+        h2 {
+            font-weight: 400;
+        }
+    }
+    .body {
+        padding: 30px;
+        border-top: none;
+        border-radius: 0 0 20px 20px;
+        background-color: rgba($white, 0.9);
+        .btn {
+            height: 45px;
+            font-size: 18px;
+            font-weight: 500;
+            width: 200px;
+            background-color: $primary;
+            color: $white;
+            border-radius: 15px;
+        }
+    }
+}

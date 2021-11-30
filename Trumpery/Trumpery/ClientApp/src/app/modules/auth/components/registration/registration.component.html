@@ -1,1 +1,22 @@
-<p>registration works!</p>
+<div class="registration-card">
+    <div class="header">
+        <h2>Regisztráció</h2>
+    </div>
+    <div class="body">
+        <app-input-field [form]="registerForm" controlKey="username" label="Felhasználónév" requiredError="Felhasználónév megadása kötelező">
+        </app-input-field>
+
+        <app-input-field [form]="registerForm" controlKey="email" label="Email cím" requiredError="Email cím megadása kötelező" patternError="Az e-mail cím formátuma nem megfelelő">
+        </app-input-field>
+
+        <app-input-field [form]="registerForm" controlKey="password" label="Jelszó" type="password" requiredError="Jelszó kitöltése kötelező" patternError="A jelszó legalább 8 karakter, tartalmaznia kell kis és nagybetűt, illetve számot!">
+        </app-input-field>
+
+        <app-input-field [form]="registerForm" controlKey="passwordAgain" label="Jelszó újra" type="password" requiredError="Jelszó kitöltése kötelező" patternError="A jelszó legalább 8 karakter, tartalmaznia kell kis és nagybetűt, illetve számot!">
+        </app-input-field>
+
+        <div class="button-wrapper-left">
+            <button class="btn" (click)="onSubmit()">Regisztráció</button>
+        </div>
+    </div>
+</div>
