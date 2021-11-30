@@ -1,6 +1,17 @@
 <div class="browse-page">
     <!-- FILTER COMPONENT -->
-
+    <div class="filter-wrapper">
+        <div class="keywords">
+            <span *ngFor="let kw of filterWords">
+                <p>{{ kw }}</p>
+                <button (click)="removeKeyword(kw)"><img src="assets/icons/clear.svg" alt="Delete"></button>
+            </span>
+        </div>
+        <div class="input-wrapper">
+            <input class="text-input" placeholder="Kulcsszavak keresése..." type="text" [formControl]="filterControl" (keyup.enter)="addKeyword()">
+            <button class="btn" (click)="onSearch()">Keresés</button>
+        </div>
+    </div>
 
     <!-- ANIMATION CARDS -->
     <div class="list">
