@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 using Trumpery.Controllers.Policies;
 using Trumpery.Data;
@@ -9,7 +8,7 @@ using Trumpery.Models;
 
 namespace Trumpery.Controllers
 {
-    [Route("api/comments")]
+    [Route("api/comment")]
     [ApiController]
     [Authorize]
     public class CommentController : AuthenticableControllerBase
