@@ -16,7 +16,7 @@ namespace Trumpery.Controllers
         private readonly TrumperyContext _context;
         CommentController(TrumperyContext context) => _context = context;
 
-        [HttpPost]
+        [HttpPost("create")]
         public IActionResult Create(Comment comment)
         {
             if (!IsCurrentUser(comment.User.Id)) return Unauthorized();
@@ -25,7 +25,7 @@ namespace Trumpery.Controllers
             return NoContent();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         public IActionResult Update(int id, Comment comment)
         {
             if (!IsCurrentUser(comment.User.Id)) return Unauthorized();
@@ -38,7 +38,7 @@ namespace Trumpery.Controllers
             return NotFound();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("hide/{id}")]
         public IActionResult Hide(int id)
         {
             var comment = _context.Comments.Find(id);

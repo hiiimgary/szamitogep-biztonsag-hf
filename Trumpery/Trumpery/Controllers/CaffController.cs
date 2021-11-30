@@ -27,15 +27,10 @@ namespace Trumpery.Controllers
             _hostingEnvironment = environment;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Caff>> Index()
+        [HttpGet("index")]
+        public ActionResult<IEnumerable<Caff>> Index(string keywords)
         {
-            return _context.Caffs;
-        }
-
-        [HttpGet]
-        public ActionResult<IEnumerable<Caff>> Search(string keywords)
-        {
+            if (keywords == null) return _context.Caffs;
             return (List<Caff>)_context.Caffs.Where(c => MatchingSearch(c, keywords));
         }
 
@@ -52,7 +47,7 @@ namespace Trumpery.Controllers
             return false;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("show/{id}")]
         public ActionResult<IEnumerable<Object>> Show(int id)
         {
             Caff caff = _context.Caffs.FirstOrDefault(c => c.Id == id);
@@ -63,7 +58,7 @@ namespace Trumpery.Controllers
             return caffWithComments;
         }
 
-        [HttpPost]
+        [HttpPost("upload")]
         public IActionResult Upload(IFormFile file)
         {
             /// upload caff file
@@ -140,7 +135,7 @@ namespace Trumpery.Controllers
             return uniqueRandom;
         }
 
-        [HttpPost]
+        [HttpPost("download")]
         public IActionResult Download(int id)
         {
             Caff caff = _context.Caffs.FirstOrDefault(c => c.Id == id);
@@ -170,7 +165,7 @@ namespace Trumpery.Controllers
             return contentType;
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("destroy/{id}")]
         public IActionResult Destroy(int id)
         {
             if (!IsAdmin(_context)) return Unauthorized();

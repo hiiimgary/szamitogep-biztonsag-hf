@@ -20,7 +20,7 @@ namespace Trumpery.Controllers
         private readonly TrumperyContext _context;
         UsersController(TrumperyContext context) => _context = context;
 
-        [HttpGet]
+        [HttpGet("index")]
         [Authorize]
         public ActionResult<IEnumerable<User>> Index()
         {
@@ -28,11 +28,14 @@ namespace Trumpery.Controllers
             return _context.Users;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("show/{id}")]
         [Authorize]
         public User Show(int id) => _context.Users.FirstOrDefault(u => u.Id == id);
 
-        [HttpPost]
+        [HttpGet("lofasz")]
+        public ActionResult<User> Create() => Ok();
+
+        [HttpPost("create")]
         public ActionResult<User> Create(User user)
         {
             user.Admin = false;
@@ -42,7 +45,7 @@ namespace Trumpery.Controllers
             return CreatedAtAction("Show", new { id = user.Id }, user);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         [Authorize]
         public IActionResult Update(int id, User user)
         {
@@ -56,7 +59,7 @@ namespace Trumpery.Controllers
             return NotFound();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("destroy/{id}")]
         [Authorize]
         public IActionResult Destroy(int id)
         {
