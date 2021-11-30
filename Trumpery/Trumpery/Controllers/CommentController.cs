@@ -15,7 +15,7 @@ namespace Trumpery.Controllers
     public class CommentController : AuthenticableControllerBase
     {
         private readonly TrumperyContext _context;
-        CommentController(TrumperyContext context) => _context = context;
+        public CommentController(TrumperyContext context) => _context = context;
 
         [HttpPost("create")]
         public IActionResult Create([FromBody] Comment comment)

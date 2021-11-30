@@ -19,7 +19,7 @@ namespace Trumpery.Controllers
         private readonly string REGEX_PASSWORD = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$";
         private readonly string REGEX_USERNAME = @"^(?i)(((?=.{6,21}$)[a-z\d]+\.[a-z\d]+)|[a-z\d]{6,32})$";
         private readonly TrumperyContext _context;
-        UsersController(TrumperyContext context) => _context = context;
+        public UsersController(TrumperyContext context) => _context = context;
 
         [HttpGet("index")]
         [Authorize]
@@ -35,9 +35,6 @@ namespace Trumpery.Controllers
         {
             return FilterUser(_context.Users.FirstOrDefault(u => u.Id == id));
         }
-
-        [HttpGet("lofasz")]
-        public ActionResult<User> Kercso() => Ok();
 
         [HttpPost("create")]
         public IActionResult Create([FromBody] User user)

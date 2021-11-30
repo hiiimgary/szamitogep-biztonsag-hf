@@ -21,7 +21,7 @@ namespace Trumpery.Controllers
     {
         private readonly TrumperyContext _context;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        CaffController(TrumperyContext context, IWebHostEnvironment environment)
+        public CaffController(TrumperyContext context, IWebHostEnvironment environment)
         {
             _context = context;
             _hostingEnvironment = environment;
