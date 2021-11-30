@@ -1,9 +1,12 @@
 @import 'shared';
 
 header {
-    width: 100vw;
     height: 56px;
     background-color: $primary;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     ul {
         display: flex;
         height: 100%;
