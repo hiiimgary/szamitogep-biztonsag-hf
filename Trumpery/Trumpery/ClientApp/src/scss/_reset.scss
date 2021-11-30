@@ -1,0 +1,184 @@
+// Reset
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(#000, 0);
+}
+
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+    font-size: 1rem;
+}
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+button {
+    border: 0;
+    background: transparent;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+button,
+input {
+    overflow: visible;
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+button,
+[type="button"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
+
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+[type="search"] {
+    outline-offset: -2px;
+    -webkit-appearance: none;
+}
+
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+    font: inherit;
+    -webkit-appearance: button;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+select {
+    word-wrap: normal;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+input,
+textarea {
+    border: 0;
+    font-family: inherit;
+}
+
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+img {
+    border-style: none;
+}
+
+svg {
+    overflow: hidden;
+}
+
+ul,
+ol {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+[tabindex="-1"]:focus:not(:focus-visible) {
+    outline: 0 !important;
+}
+
+b,
+strong {
+    font-weight: 700;
+}
+
+small {
+    font-size: 80%;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    text-align: inherit;
+}
+
+label {
+    display: inline-block;
+}

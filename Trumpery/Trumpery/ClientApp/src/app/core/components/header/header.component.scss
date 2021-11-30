@@ -1,0 +1,26 @@
+@import 'shared';
+
+header {
+    width: 100vw;
+    height: 56px;
+    background-color: $primary;
+    ul {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: flex-end;
+        column-gap: 30px;
+        li {
+            .nav-link {
+                color: $white;
+                font-weight: 700;
+                padding: 5px 20px;
+                border-radius: 5px;
+                transition: 0.2s ease;
+                &.active {
+                    background-color: $accent;
+                }
+            }
+        }
+    }
+}
