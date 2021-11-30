@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AnimationService } from '../../animation.service';
+import { Observable } from 'rxjs';
+import { IAnimationListItem } from '../../models/animation-list-item.interface';
 
 @Component({
   selector: 'app-animation-list',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnimationListComponent implements OnInit {
 
-  constructor() { }
+  animationList$: Observable<IAnimationListItem[]>;
+
+  constructor(
+    private readonly animationService: AnimationService
+  ) { }
 
   ngOnInit(): void {
+    this.animationList$ = this.animationService.getAnimationList();
   }
 
 }

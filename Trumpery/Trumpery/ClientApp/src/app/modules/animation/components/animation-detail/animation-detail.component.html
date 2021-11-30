@@ -1,1 +1,32 @@
-<p>animation-detail works!</p>
+<div class="detail-page" *ngIf="animationDetail$ | async as detail">
+
+    <!-- IMAGE -->
+    <div class="animation-wrapper">
+        <img class="animation" [src]="detail.animation.gifPath" alt="Caff">
+    </div>
+
+    <!-- INFO -->
+    <div class="content">
+        <h3 class="author">{{ detail.animation.author }}</h3>
+        <p class="description">{{ detail.animation.description }}</p>
+        <p class="tags"><span *ngFor="let t of detail.animation.tags">{{ t }}</span></p>
+        <p class="date">{{ detail.animation.createdAt | date:'yyyy MMMM dd HH:mm' }}</p>
+    </div>
+
+    <div class="add-comment">
+        <app-input-field [form]="commentForm" controlKey="comment" label="Hozzászólás írása" inputType="textarea"
+            requiredError="A komment tartalma nem lehet üres">
+        </app-input-field>
+        <div class="btn-wrapper">
+            <button class="btn" (click)="onSaveComment(detail.id)">Mentés</button>
+        </div>
+    </div>
+
+    <!-- COMMENTS -->
+    <div class="comments">
+        <div class="comment" *ngFor="let comment of detail.comments">
+            <p class="user">{{ comment.user.name }}</p>
+            <p class="text">{{ comment.content }}</p>
+        </div>
+    </div>
+</div>
