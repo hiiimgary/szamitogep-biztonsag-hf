@@ -12,7 +12,6 @@ namespace Trumpery.Controllers
 {
     [Route("api/user")]
     [ApiController]
-    [Authorize]
     public class UsersController : AuthenticableControllerBase
     {
         private readonly string REGEX_EMAIL = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
@@ -22,6 +21,7 @@ namespace Trumpery.Controllers
         UsersController(TrumperyContext context) => _context = context;
 
         [HttpGet]
+        [Authorize]
         public ActionResult<IEnumerable<User>> Index()
         {
             if (!IsAdmin(_context)) return Unauthorized();
@@ -29,6 +29,7 @@ namespace Trumpery.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public User Show(int id) => _context.Users.FirstOrDefault(u => u.Id == id);
 
         [HttpPost]
@@ -42,6 +43,7 @@ namespace Trumpery.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Update(int id, User user)
         {
             if (!IsAdmin(_context)) return Unauthorized();
@@ -55,6 +57,7 @@ namespace Trumpery.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Destroy(int id)
         {
             if (!IsAdmin(_context) || !IsCurrentUser(id)) return Unauthorized();
