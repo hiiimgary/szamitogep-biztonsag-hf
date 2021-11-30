@@ -50,7 +50,6 @@ Caff* fileReader(const char* input_file) {
     }
 
     input.close();
-    printf("end of file reached, closing stream...\n");
     return caff;
 }
 

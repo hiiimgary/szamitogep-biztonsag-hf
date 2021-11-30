@@ -20,9 +20,7 @@ CiffContent Ciff::getContent() {
 void Ciff::saveCiffPartsToVariables(std::vector<char> animation) {
 
     // Setting magic
-    printf("------CIFF HEADER---------\n");
     char* magic = vectorToString(trim(animation, 0, 3));
-    printf("Magic: %s\n", magic);
 
     if (strcmp(magic, "CIFF") != 0) {
         throw "Not valid Ciff Format";
@@ -65,7 +63,7 @@ uint64_t Ciff::parseCaption(std::vector<char> in, uint64_t from) {
 
     tmp[i + 1] = '\0';
     header.setCaption(tmp);
-    printf("Caption: %s", tmp);
+    printf("%s", tmp); //caption
 
     delete[] tmp;
 
@@ -85,7 +83,7 @@ void Ciff::parseTags(std::vector<char> in, uint64_t from, uint64_t to) {
         }
     }
 
-    printf("TAGS: %s\n", tmp);
+    printf("%s\n", tmp); //tags
     delete[] tmp;
     header.setTags(tags);
 }

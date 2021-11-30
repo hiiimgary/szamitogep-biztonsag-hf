@@ -19,6 +19,8 @@ namespace Trumpery.Models
         [Required]
         public string Description { get; set; }
         [Required]
+        public string TimeOfCreation { get; set; }
+        [Required]
         public string CaffFilePath { get; set; }
         [Required]
         public string GifFilePath { get; set; }

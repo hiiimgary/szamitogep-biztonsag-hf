@@ -80,16 +80,40 @@ namespace Trumpery.Controllers
                 file.CopyTo(fileStream);
             }
             /// create gif file
-            var process = new Process();
-            process.StartInfo.FileName = "run.exe";
-            process.StartInfo.Arguments = caff_path + " " + gif_path;
-            ///[TODO]
-
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "Parser/parser.exe",
+                    Arguments = caff_path + " " + gif_path,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
+            string time = "";
+            string auth = "";
+            List<string> desc = new List<string>();
+            List<string> tags = new List<string>();
+            int i = 0;
+            proc.Start();
+            while (!proc.StandardOutput.EndOfStream)
+            {
+                string line = proc.StandardOutput.ReadLine();
+                if (i == 0) time = line;
+                if (i == 1) auth = line;
+                if (i >= 2 && i % 2 == 0 && !desc.Contains(line)) desc.Add(line);
+                if (i >= 2 && i % 2 == 1 && !tags.Contains(line)) tags.Add(line);
+                i++;
+            }
+            proc.WaitForExit();
+            proc.Close();
             /// create db entity
             Caff caff = new Caff();
-            caff.Author = "";
-            caff.Description = "";
-            caff.TagsRaw = "";
+            caff.TimeOfCreation = time;
+            caff.Author = auth;
+            caff.Description = String.Join("; ", desc);
+            caff.TagsRaw = String.Join("_", tags);
             caff.CaffFilePath = caff_path;
             caff.GifFilePath = gif_path;
             _context.Caffs.Add(caff);
