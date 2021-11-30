@@ -30,13 +30,14 @@ namespace Trumpery.Controllers
         [HttpPost]
         public ActionResult<User> Create(User user)
         {
+            user.Admin = false;
             _context.Users.Add(user);
             _context.SaveChanges();
             return CreatedAtAction("Show", new { id = user.Id }, user);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, User user)
+        public IActionResult Update(int id, User user)
         {
             if (!IsAdmin(_context)) return Unauthorized();
             if (_context.Users.Any(e => e.Id == id))
@@ -49,7 +50,7 @@ namespace Trumpery.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Destroy(int id)
         {
             if (!IsAdmin(_context) || !IsCurrentUser(id)) return Unauthorized();
             var user = _context.Users.Find(id);

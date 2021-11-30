@@ -84,7 +84,7 @@ namespace Trumpery.Controllers
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = "Parser/parser.exe",
+                    FileName = "Parser/szamitogep_biztonsag_hf.exe",
                     Arguments = caff_path + " " + gif_path,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
@@ -171,7 +171,7 @@ namespace Trumpery.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Destroy(int id)
         {
             if (!IsAdmin(_context)) return Unauthorized();
             var caff = _context.Caffs.Find(id);
