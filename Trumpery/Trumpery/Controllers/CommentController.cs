@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using Trumpery.Controllers.Policies;
 using Trumpery.Data;
@@ -17,20 +18,25 @@ namespace Trumpery.Controllers
         CommentController(TrumperyContext context) => _context = context;
 
         [HttpPost("create")]
-        public IActionResult Create(Comment comment)
+        public IActionResult Create([FromBody] Comment comment)
         {
             if (!IsCurrentUser(comment.User.Id)) return Unauthorized();
+            comment.Hidden = false;
+            comment.TimeOfCreation = DateTime.Now.ToString();
             _context.Comments.Add(comment);
             _context.SaveChanges();
             return NoContent();
         }
 
         [HttpPut("update/{id}")]
-        public IActionResult Update(int id, Comment comment)
+        public IActionResult Update(int id, [FromBody] string content)
         {
-            if (!IsCurrentUser(comment.User.Id)) return Unauthorized();
             if (_context.Comments.Any(c => c.Id == id))
             {
+                Comment comment = _context.Comments.FirstOrDefault(c => c.Id == id);
+                if (!IsCurrentUser(comment.User.Id)) return Unauthorized();
+                comment.Content = content;
+                comment.TimeOfCreation = DateTime.Now.ToString();
                 _context.Entry(comment).State = EntityState.Modified;
                 _context.SaveChanges();
                 return NoContent();

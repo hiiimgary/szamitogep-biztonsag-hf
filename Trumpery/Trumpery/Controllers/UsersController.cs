@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -22,36 +23,41 @@ namespace Trumpery.Controllers
 
         [HttpGet("index")]
         [Authorize]
-        public ActionResult<IEnumerable<User>> Index()
+        public ActionResult<IEnumerable<Object>> Index()
         {
             if (!IsAdmin(_context)) return Unauthorized();
-            return _context.Users;
+            return FilterUsers(_context.Users.ToList());
         }
 
         [HttpGet("show/{id}")]
         [Authorize]
-        public User Show(int id) => _context.Users.FirstOrDefault(u => u.Id == id);
+        public ActionResult<Object> Show(int id)
+        {
+            return FilterUser(_context.Users.FirstOrDefault(u => u.Id == id));
+        }
 
         [HttpGet("lofasz")]
-        public ActionResult<User> Create() => Ok();
+        public ActionResult<User> Kercso() => Ok();
 
         [HttpPost("create")]
-        public ActionResult<User> Create(User user)
+        public IActionResult Create([FromBody] User user)
         {
             user.Admin = false;
             if (!ValidUsername(user.Name) || !ValidEmail(user.Email) || !StrongPassword(user.Password)) return BadRequest();
             _context.Users.Add(user);
             _context.SaveChanges();
-            return CreatedAtAction("Show", new { id = user.Id }, user);
+            return NoContent();
         }
 
         [HttpPut("update/{id}")]
         [Authorize]
-        public IActionResult Update(int id, User user)
+        public IActionResult Update(int id, [FromBody] string username)
         {
             if (!IsAdmin(_context)) return Unauthorized();
-            if (_context.Users.Any(e => e.Id == id))
+            if (_context.Users.Any(e => e.Id == id) && ValidUsername(username))
             {
+                User user = _context.Users.FirstOrDefault(u => u.Id == id);
+                user.Name = username;
                 _context.Entry(user).State = EntityState.Modified;
                 _context.SaveChanges();
                 return NoContent();
@@ -84,6 +90,28 @@ namespace Trumpery.Controllers
         private bool StrongPassword(string password)
         {
             return Regex.Match(password, REGEX_PASSWORD).Success;
+        }
+
+        private List<Object> FilterUsers(List<User> users)
+        {
+            if (users == null) return null;
+            List<Object> objects = new List<Object>();
+            foreach (User u in users)
+            {
+                objects.Add(FilterUser(u));
+            }
+            return objects;
+        }
+
+        private Object FilterUser(User user)
+        {
+            if (user == null) return null;
+            return new
+            {
+                id = user.Id,
+                name = user.Name,
+                email = user.Email
+            };
         }
     }
 }

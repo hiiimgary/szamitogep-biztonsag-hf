@@ -48,6 +48,7 @@ namespace Trumpery.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(nullable: false),
                     Hidden = table.Column<bool>(nullable: false),
+                    TimeOfCreation = table.Column<string>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
                     CaffId = table.Column<int>(nullable: false)
                 },

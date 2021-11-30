@@ -9,7 +9,7 @@ using Trumpery.Data;
 namespace Trumpery.Migrations
 {
     [DbContext(typeof(TrumperyContext))]
-    [Migration("20211130165922_InitialCreate")]
+    [Migration("20211130210503_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,6 +73,10 @@ namespace Trumpery.Migrations
 
                     b.Property<bool>("Hidden")
                         .HasColumnType("bit");
+
+                    b.Property<string>("TimeOfCreation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");

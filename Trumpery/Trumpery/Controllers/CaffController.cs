@@ -28,10 +28,10 @@ namespace Trumpery.Controllers
         }
 
         [HttpGet("index")]
-        public ActionResult<IEnumerable<Caff>> Index(string keywords)
+        public ActionResult<IEnumerable<Object>> Index([FromBody] string keywords)
         {
-            if (keywords == null) return _context.Caffs;
-            return (List<Caff>)_context.Caffs.Where(c => MatchingSearch(c, keywords));
+            if (keywords == null) return FilterCaffs(_context.Caffs.ToList());
+            return FilterCaffs(_context.Caffs.Where(c => MatchingSearch(c, keywords)).ToList());
         }
 
         private bool MatchingSearch(Caff caff, string keywords)
@@ -53,13 +53,13 @@ namespace Trumpery.Controllers
             Caff caff = _context.Caffs.FirstOrDefault(c => c.Id == id);
             if (caff == null) return NotFound();
             List<Object> caffWithComments = new List<object>();
-            caffWithComments.Add(caff);
-            caffWithComments.AddRange(_context.Comments.Where(c => c.Caff.Id == id));
+            caffWithComments.Add(FilterCaff(caff));
+            caffWithComments.AddRange(FilterComments(_context.Comments.Where(c => c.Caff.Id == id && !c.Hidden).ToList()));
             return caffWithComments;
         }
 
         [HttpPost("upload")]
-        public IActionResult Upload(IFormFile file)
+        public IActionResult Upload([FromForm] IFormFile file)
         {
             /// upload caff file
             var caff_folder = Path.Combine(_hostingEnvironment.WebRootPath, "caff");
@@ -113,7 +113,7 @@ namespace Trumpery.Controllers
             caff.GifFilePath = gif_path;
             _context.Caffs.Add(caff);
             _context.SaveChanges();
-            return CreatedAtAction("Show", new { id = caff.Id }, caff);
+            return NoContent();
         }
 
         private string UniqueRandomString32()
@@ -135,7 +135,7 @@ namespace Trumpery.Controllers
             return uniqueRandom;
         }
 
-        [HttpPost("download")]
+        [HttpPost("download/{id}")]
         public IActionResult Download(int id)
         {
             Caff caff = _context.Caffs.FirstOrDefault(c => c.Id == id);
@@ -178,6 +178,54 @@ namespace Trumpery.Controllers
             _context.Caffs.Remove(caff);
             _context.SaveChanges();
             return NoContent();
+        }
+
+        private List<Object> FilterCaffs(List<Caff> caffs)
+        {
+            if (caffs == null) return null;
+            List<Object> objects = new List<Object>();
+            foreach (Caff c in caffs)
+            {
+                objects.Add(FilterCaff(c));
+            }
+            return objects;
+        }
+
+        private Object FilterCaff(Caff caff)
+        {
+            if (caff == null) return null;
+            return new
+            {
+                id = caff.Id,
+                timeOfCreation = caff.TimeOfCreation,
+                author = caff.Author,
+                description = caff.Description,
+                tagsRaw = caff.TagsRaw,
+                gifFilePath = caff.GifFilePath
+            };
+        }
+
+        private List<Object> FilterComments(List<Comment> comments)
+        {
+            if (comments == null) return null;
+            List<Object> objects = new List<Object>();
+            foreach (Comment c in comments)
+            {
+                objects.Add(FilterComment(c));
+            }
+            return objects;
+        }
+
+        private Object FilterComment(Comment comment)
+        {
+            if (comment == null) return null;
+            return new
+            {
+                id = comment.Id,
+                timeOfCreation = comment.TimeOfCreation,
+                content = comment.Content,
+                userName = comment.User.Name
+            };
         }
     }
 }
