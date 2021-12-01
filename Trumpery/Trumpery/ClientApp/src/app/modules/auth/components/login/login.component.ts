@@ -36,8 +36,9 @@ export class LoginComponent implements OnInit {
     const payload: ILoginRequest = this.loginForm.value;
 
     this.authService.login(payload).subscribe((login: any) => {
-      console.log(login);
       this.router.navigate(['/', 'animations']);
+    }, err => {
+      window.alert('Valami hiba történt');
     });
   }
 

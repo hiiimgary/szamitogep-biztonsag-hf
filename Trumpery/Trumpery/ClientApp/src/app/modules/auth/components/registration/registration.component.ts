@@ -44,7 +44,12 @@ export class RegistrationComponent implements OnInit {
       window.alert('A megadott jelszavak nem egyeznek!');
       return;
     }
-    this.router.navigate(['/', 'login']);
+
+    this.authService.register(this.registerForm.value).subscribe((res) => {
+      this.router.navigate(['/', 'login']);
+    }, err => {
+      window.alert('Valami hiba történt');
+    });
   }
 
 }
