@@ -24,6 +24,10 @@ header {
                 &.active {
                     background-color: $accent;
                 }
+                &.accent {
+                    background-color: $white;
+                    color: $accent;
+                }
             }
         }
     }

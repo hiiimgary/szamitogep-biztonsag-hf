@@ -1,10 +1,16 @@
 <header>
     <ul class="container">
         <li>
+            <a class="nav-link accent" [routerLink]="['/', 'animations', 'browse']" routerLinkActive="active">Feltöltés</a>
+        </li>
+        <li>
             <a class="nav-link" [routerLink]="['/', 'animations', 'browse']" routerLinkActive="active">Animációk</a>
         </li>
         <li>
             <a class="nav-link" [routerLink]="['/', 'profile']" routerLinkActive="active">Profil</a>
+        </li>
+        <li>
+            <a class="nav-link" *adminOnly [routerLink]="['/', 'profile']" routerLinkActive="active">Felhasználók</a>
         </li>
     </ul>
 </header>

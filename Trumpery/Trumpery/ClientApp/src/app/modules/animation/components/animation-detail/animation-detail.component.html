@@ -3,6 +3,7 @@
     <!-- IMAGE -->
     <div class="animation-wrapper">
         <img class="animation" [src]="detail.animation.gifPath" alt="Caff">
+        <button *adminOnly class="delete-btn"><img src="assets/icons/clear.svg" alt="Delete"></button>
     </div>
 
     <!-- INFO -->
@@ -27,6 +28,7 @@
         <div class="comment" *ngFor="let comment of detail.comments">
             <p class="user">{{ comment.user.name }}</p>
             <p class="text">{{ comment.content }}</p>
+            <button *adminOnly class="delete-btn nobg"><img src="assets/icons/clear.svg" alt="Delete"></button>
         </div>
     </div>
 </div>

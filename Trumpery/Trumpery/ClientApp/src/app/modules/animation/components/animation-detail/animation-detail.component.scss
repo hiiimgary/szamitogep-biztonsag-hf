@@ -7,10 +7,22 @@
         display: flex;
         justify-content: center;
         align-items: flex-start;
+        position: relative;
         .animation {
             max-height: 80vh;
             width: 100%;
             border-radius: 10px;
+        }
+    }
+    .delete-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: rgba($black, 0.9);
+        padding: 3px;
+        border-radius: 50%;
+        &.nobg {
+            background-color: transparent;
         }
     }
     .content {
