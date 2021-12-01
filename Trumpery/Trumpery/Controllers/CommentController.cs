@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using Trumpery.Controllers.Policies;
 using Trumpery.Data;
+using Trumpery.DTOs;
 using Trumpery.Models;
 
 namespace Trumpery.Controllers
@@ -18,11 +19,11 @@ namespace Trumpery.Controllers
         public CommentController(TrumperyContext context) => _context = context;
 
         [HttpPost("create")]
-        public IActionResult Create([FromBody] Comment comment)
+        public IActionResult Create([FromBody] CommentRequest request)
         {
+            Comment comment = request.ToComment(_context);
+            if (!CommentValidator.IsValid(comment, _context)) return BadRequest();
             if (!IsCurrentUser(comment.User.Id)) return Unauthorized();
-            comment.Hidden = false;
-            comment.TimeOfCreation = DateTime.Now.ToString();
             _context.Comments.Add(comment);
             _context.SaveChanges();
             return NoContent();
@@ -37,6 +38,7 @@ namespace Trumpery.Controllers
                 if (!IsCurrentUser(comment.User.Id)) return Unauthorized();
                 comment.Content = content;
                 comment.TimeOfCreation = DateTime.Now.ToString();
+                if (!CommentValidator.IsValid(comment, _context)) return BadRequest();
                 _context.Entry(comment).State = EntityState.Modified;
                 _context.SaveChanges();
                 return NoContent();

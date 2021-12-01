@@ -1,12 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Text.RegularExpressions;
+using System.Security.Claims;
+using System.Text;
 using Trumpery.Controllers.Policies;
 using Trumpery.Data;
+using Trumpery.DTOs;
 using Trumpery.Models;
 
 namespace Trumpery.Controllers
@@ -15,35 +20,60 @@ namespace Trumpery.Controllers
     [ApiController]
     public class UsersController : AuthenticableControllerBase
     {
-        private readonly string REGEX_EMAIL = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
-        private readonly string REGEX_PASSWORD = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$";
-        private readonly string REGEX_USERNAME = @"^(?i)(((?=.{6,21}$)[a-z\d]+\.[a-z\d]+)|[a-z\d]{6,32})$";
         private readonly TrumperyContext _context;
-        public UsersController(TrumperyContext context) => _context = context;
+        private readonly IConfiguration _config;
+        public UsersController(TrumperyContext context, IConfiguration config)
+        {
+            _context = context;
+            _config = config;
+        }
 
         [HttpGet("index")]
         [Authorize]
-        public ActionResult<IEnumerable<Object>> Index()
+        public ActionResult<UsersResponse> Index()
         {
             if (!IsAdmin(_context)) return Unauthorized();
-            return FilterUsers(_context.Users.ToList());
+            return new UsersResponse(_context.Users.ToList());
         }
 
         [HttpGet("show/{id}")]
         [Authorize]
-        public ActionResult<Object> Show(int id)
+        public ActionResult<UserResponse> Show(int id)
         {
-            return FilterUser(_context.Users.FirstOrDefault(u => u.Id == id));
+            return new UserResponse(_context.Users.FirstOrDefault(u => u.Id == id));
         }
 
         [HttpPost("create")]
-        public IActionResult Create([FromBody] User user)
+        public IActionResult Create([FromBody] UserRegisterRequest request)
         {
-            user.Admin = false;
-            if (!ValidUsername(user.Name) || !ValidEmail(user.Email) || !StrongPassword(user.Password)) return BadRequest();
+            User user = request.ToUser();
+            if (!UserValidator.Validate(user, _context)) return BadRequest();
             _context.Users.Add(user);
             _context.SaveChanges();
             return NoContent();
+        }
+
+        [HttpPost("login")]
+        public ActionResult<string> Login([FromBody] UserLoginRequest request)
+        {
+            User user = request.ToUser(_context);
+            if (user != null) return Unauthorized();
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            var claims = new[] {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.Name),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
+            var token = new JwtSecurityToken(
+                _config["Jwt:Issuer"],
+                _config["Jwt:Issuer"],
+                claims,
+                expires: DateTime.Now.AddMinutes(30),
+                signingCredentials: credentials);
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+            return Ok(new { token = tokenString });
         }
 
         [HttpPut("update/{id}")]
@@ -51,10 +81,11 @@ namespace Trumpery.Controllers
         public IActionResult Update(int id, [FromBody] string username)
         {
             if (!IsAdmin(_context)) return Unauthorized();
-            if (_context.Users.Any(e => e.Id == id) && ValidUsername(username))
+            if (_context.Users.Any(e => e.Id == id))
             {
                 User user = _context.Users.FirstOrDefault(u => u.Id == id);
                 user.Name = username;
+                if (!UserValidator.Validate(user, _context)) return BadRequest();
                 _context.Entry(user).State = EntityState.Modified;
                 _context.SaveChanges();
                 return NoContent();
@@ -72,43 +103,6 @@ namespace Trumpery.Controllers
             _context.Users.Remove(user);
             _context.SaveChanges();
             return NoContent();
-        }
-
-        private bool ValidUsername(string username)
-        {
-            return Regex.Match(username, REGEX_USERNAME).Success;
-        }
-
-        private bool ValidEmail(string email)
-        {
-            return Regex.Match(email, REGEX_EMAIL).Success;
-        }
-
-        private bool StrongPassword(string password)
-        {
-            return Regex.Match(password, REGEX_PASSWORD).Success;
-        }
-
-        private List<Object> FilterUsers(List<User> users)
-        {
-            if (users == null) return null;
-            List<Object> objects = new List<Object>();
-            foreach (User u in users)
-            {
-                objects.Add(FilterUser(u));
-            }
-            return objects;
-        }
-
-        private Object FilterUser(User user)
-        {
-            if (user == null) return null;
-            return new
-            {
-                id = user.Id,
-                name = user.Name,
-                email = user.Email
-            };
         }
     }
 }

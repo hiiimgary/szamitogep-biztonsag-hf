@@ -25,7 +25,7 @@ namespace Trumpery
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            var key = Configuration.GetValue<string>("JwtAuthKey");
+            var key = Configuration.GetValue<string>("Jwt:Key");
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

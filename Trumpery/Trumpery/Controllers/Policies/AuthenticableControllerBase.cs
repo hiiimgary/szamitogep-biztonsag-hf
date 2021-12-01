@@ -21,5 +21,12 @@ namespace Trumpery.Controllers.Policies
             string user_id = User.Claims.Where(u => u.Type == "id").FirstOrDefault().Value;
             return Convert.ToInt64(user_id) == id;
         }
+
+        public User GetCurrentUser(TrumperyContext context)
+        {
+            string user_id = User.Claims.Where(u => u.Type == "id").FirstOrDefault().Value;
+            User user = context.Users.FirstOrDefault(u => u.Id == Convert.ToInt64(user_id));
+            return user;
+        }
     }
 }

@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using Trumpery.Controllers.Policies;
 using Trumpery.Data;
+using Trumpery.DTOs;
 using Trumpery.Models;
 
 namespace Trumpery.Controllers
@@ -28,10 +29,10 @@ namespace Trumpery.Controllers
         }
 
         [HttpGet("index")]
-        public ActionResult<IEnumerable<Object>> Index([FromBody] string keywords)
+        public ActionResult<CaffsResponse> Index([FromBody] string keywords)
         {
-            if (keywords == null) return FilterCaffs(_context.Caffs.ToList());
-            return FilterCaffs(_context.Caffs.Where(c => MatchingSearch(c, keywords)).ToList());
+            if (keywords == null) return new CaffsResponse(_context.Caffs.ToList());
+            return new CaffsResponse(_context.Caffs.Where(c => MatchingSearch(c, keywords)).ToList());
         }
 
         private bool MatchingSearch(Caff caff, string keywords)
@@ -48,14 +49,11 @@ namespace Trumpery.Controllers
         }
 
         [HttpGet("show/{id}")]
-        public ActionResult<IEnumerable<Object>> Show(int id)
+        public ActionResult<CaffResponse> Show(int id)
         {
             Caff caff = _context.Caffs.FirstOrDefault(c => c.Id == id);
             if (caff == null) return NotFound();
-            List<Object> caffWithComments = new List<object>();
-            caffWithComments.Add(FilterCaff(caff));
-            caffWithComments.AddRange(FilterComments(_context.Comments.Where(c => c.Caff.Id == id && !c.Hidden).ToList()));
-            return caffWithComments;
+            return new CaffResponse(caff, _context);
         }
 
         [HttpPost("upload")]
@@ -178,54 +176,6 @@ namespace Trumpery.Controllers
             _context.Caffs.Remove(caff);
             _context.SaveChanges();
             return NoContent();
-        }
-
-        private List<Object> FilterCaffs(List<Caff> caffs)
-        {
-            if (caffs == null) return null;
-            List<Object> objects = new List<Object>();
-            foreach (Caff c in caffs)
-            {
-                objects.Add(FilterCaff(c));
-            }
-            return objects;
-        }
-
-        private Object FilterCaff(Caff caff)
-        {
-            if (caff == null) return null;
-            return new
-            {
-                id = caff.Id,
-                timeOfCreation = caff.TimeOfCreation,
-                author = caff.Author,
-                description = caff.Description,
-                tagsRaw = caff.TagsRaw,
-                gifFilePath = caff.GifFilePath
-            };
-        }
-
-        private List<Object> FilterComments(List<Comment> comments)
-        {
-            if (comments == null) return null;
-            List<Object> objects = new List<Object>();
-            foreach (Comment c in comments)
-            {
-                objects.Add(FilterComment(c));
-            }
-            return objects;
-        }
-
-        private Object FilterComment(Comment comment)
-        {
-            if (comment == null) return null;
-            return new
-            {
-                id = comment.Id,
-                timeOfCreation = comment.TimeOfCreation,
-                content = comment.Content,
-                userName = comment.User.Name
-            };
         }
     }
 }
