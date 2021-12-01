@@ -101,6 +101,9 @@
             background-color: $secondary-light;
             padding: 25px 30px 15px;
             border-radius: 5px;
+            &.hidden {
+                opacity: 0.3;
+            }
             .user {
                 position: absolute;
                 top: -10px;

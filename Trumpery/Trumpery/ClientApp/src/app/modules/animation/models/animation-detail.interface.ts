@@ -6,6 +6,7 @@ export interface IAnimationDetail {
 
 export interface IComment {
     id: number;
+    isHidden?: boolean;
     content: string;
     user: ICommentUser;
 }

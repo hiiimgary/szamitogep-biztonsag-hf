@@ -65,6 +65,7 @@ export class AnimationService {
       {
         id: 1,
         content: 'Wow, ez nagyon adja.',
+        isHidden: true,
         user: {
           id: 1,
           name: 'Tesz Tamás'
