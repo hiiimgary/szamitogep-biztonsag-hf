@@ -29,10 +29,10 @@ namespace Trumpery.Controllers
         }
 
         [HttpGet("index")]
-        public ActionResult<CaffsResponse> Index([FromBody] string keywords)
+        public ActionResult<CaffsResponse> Index([FromBody] SingleStringRequest request)
         {
-            if (keywords == null) return new CaffsResponse(_context.Caffs.ToList());
-            return new CaffsResponse(_context.Caffs.Where(c => MatchingSearch(c, keywords)).ToList());
+            if (request.Data == null) return new CaffsResponse(_context.Caffs.ToList());
+            return new CaffsResponse(_context.Caffs.Where(c => MatchingSearch(c, request.Data)).ToList());
         }
 
         private bool MatchingSearch(Caff caff, string keywords)

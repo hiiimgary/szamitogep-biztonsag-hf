@@ -14,26 +14,26 @@ namespace Trumpery.Controllers.Policies
         public static bool Validate(User user, TrumperyContext _context)
         {
             return
-                ValidUsername(user.Name, _context) &&
-                ValidEmail(user.Email, _context) &&
-                ValidPassword(user.Password);
+                ValidateUsername(user.Name, _context) &&
+                ValidateEmail(user.Email, _context) &&
+                ValidatePassword(user.Password);
         }
 
-        private static bool ValidUsername(string username, TrumperyContext _context)
+        public static bool ValidateUsername(string username, TrumperyContext _context)
         {
             bool unique = !_context.Users.Any(u => u.Name.ToLower().Equals(username.ToLower()));
             bool correct = Regex.Match(username, REGEX_USERNAME).Success;
             return unique && correct;
         }
 
-        private static bool ValidEmail(string email, TrumperyContext _context)
+        private static bool ValidateEmail(string email, TrumperyContext _context)
         {
             bool unique = !_context.Users.Any(u => u.Email.ToLower().Equals(email.ToLower()));
             bool correct = Regex.Match(email, REGEX_EMAIL).Success;
             return unique && correct;
         }
 
-        private static bool ValidPassword(string password)
+        private static bool ValidatePassword(string password)
         {
             return Regex.Match(password, REGEX_PASSWORD).Success;
         }

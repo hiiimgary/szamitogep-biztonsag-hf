@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using Trumpery.Data;
 using Trumpery.Models;
 
@@ -10,23 +11,21 @@ namespace Trumpery.Controllers.Policies
     {
         public bool IsAdmin(TrumperyContext context)
         {
-            string user_id = User.Claims.Where(u => u.Type == "id").FirstOrDefault().Value;
-            User user = context.Users.FirstOrDefault(u => u.Id == Convert.ToInt64(user_id));
+            User user = GetCurrentUser(context);
             if (user == null) return false;
             return user.Admin;
         }
 
         public bool IsCurrentUser(int id)
         {
-            string user_id = User.Claims.Where(u => u.Type == "id").FirstOrDefault().Value;
-            return Convert.ToInt64(user_id) == id;
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Convert.ToInt64(userId) == id;
         }
 
         public User GetCurrentUser(TrumperyContext context)
         {
-            string user_id = User.Claims.Where(u => u.Type == "id").FirstOrDefault().Value;
-            User user = context.Users.FirstOrDefault(u => u.Id == Convert.ToInt64(user_id));
-            return user;
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return context.Users.FirstOrDefault(u => u.Id == Convert.ToInt64(userId));
         }
     }
 }

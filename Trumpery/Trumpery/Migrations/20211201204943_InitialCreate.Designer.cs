@@ -9,7 +9,7 @@ using Trumpery.Data;
 namespace Trumpery.Migrations
 {
     [DbContext(typeof(TrumperyContext))]
-    [Migration("20211130210503_InitialCreate")]
+    [Migration("20211201204943_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -40,7 +40,7 @@ namespace Trumpery.Controllers
         [Authorize]
         public ActionResult<UserResponse> Show(int id)
         {
-            return new UserResponse(_context.Users.FirstOrDefault(u => u.Id == id));
+            return new UserResponse(GetCurrentUser(_context));
         }
 
         [HttpPost("create")]
@@ -57,7 +57,7 @@ namespace Trumpery.Controllers
         public ActionResult<string> Login([FromBody] UserLoginRequest request)
         {
             User user = request.ToUser(_context);
-            if (user != null) return Unauthorized();
+            if (user == null) return Unauthorized();
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var claims = new[] {
@@ -73,19 +73,19 @@ namespace Trumpery.Controllers
                 expires: DateTime.Now.AddMinutes(30),
                 signingCredentials: credentials);
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-            return Ok(new { token = tokenString });
+            return Ok(new { token = tokenString, admin = user.Admin });
         }
 
         [HttpPut("update/{id}")]
         [Authorize]
-        public IActionResult Update(int id, [FromBody] string username)
+        public IActionResult Update(int id, [FromBody] SingleStringRequest request)
         {
             if (!IsAdmin(_context)) return Unauthorized();
+            if (!UserValidator.ValidateUsername(request.Data, _context)) return BadRequest();
             if (_context.Users.Any(e => e.Id == id))
             {
                 User user = _context.Users.FirstOrDefault(u => u.Id == id);
-                user.Name = username;
-                if (!UserValidator.Validate(user, _context)) return BadRequest();
+                user.Name = request.Data;
                 _context.Entry(user).State = EntityState.Modified;
                 _context.SaveChanges();
                 return NoContent();
@@ -97,7 +97,7 @@ namespace Trumpery.Controllers
         [Authorize]
         public IActionResult Destroy(int id)
         {
-            if (!IsAdmin(_context) || !IsCurrentUser(id)) return Unauthorized();
+            if (!IsAdmin(_context) && !IsCurrentUser(id)) return Unauthorized();
             var user = _context.Users.Find(id);
             if (user == null) return NotFound();
             _context.Users.Remove(user);

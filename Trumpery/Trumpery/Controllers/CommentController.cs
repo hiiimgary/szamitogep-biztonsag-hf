@@ -30,13 +30,13 @@ namespace Trumpery.Controllers
         }
 
         [HttpPut("update/{id}")]
-        public IActionResult Update(int id, [FromBody] string content)
+        public IActionResult Update(int id, [FromBody] SingleStringRequest request)
         {
             if (_context.Comments.Any(c => c.Id == id))
             {
                 Comment comment = _context.Comments.FirstOrDefault(c => c.Id == id);
                 if (!IsCurrentUser(comment.User.Id)) return Unauthorized();
-                comment.Content = content;
+                comment.Content = request.Data;
                 comment.TimeOfCreation = DateTime.Now.ToString();
                 if (!CommentValidator.IsValid(comment, _context)) return BadRequest();
                 _context.Entry(comment).State = EntityState.Modified;
