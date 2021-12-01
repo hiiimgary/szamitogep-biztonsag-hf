@@ -5,6 +5,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AuthComponent } from './auth.component';
 import { RouterModule } from '@angular/router';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     LoginComponent,
     RegistrationComponent,
-    AuthComponent
+    AuthComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

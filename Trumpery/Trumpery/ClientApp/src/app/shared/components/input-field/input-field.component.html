@@ -19,8 +19,7 @@
                 </ng-template>
             </div>
 
-            <input type="file" id="image-upload" #fileUpload hidden (change)="fileSelected($event.target.files)"
-            multiple="false" accept=".png, .jpeg, .jpg">
+            <input type="file" id="image-upload" #fileUpload hidden (change)="fileSelected($event.target.files)" multiple="false" accept=".png, .jpeg, .jpg">
         </ng-container>
     </ng-container>
     <div class="errors" *ngIf="control.touched && control.invalid" @expand>

@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { ProfileModule } from './modules/profile/profile.module';
 import { AnimationModule } from './modules/animation/animation.module';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { AnimationModule } from './modules/animation/animation.module';
     BrowserAnimationsModule,
     CoreModule,
     AuthModule,
-    ProfileModule,
     AnimationModule,
     AppRoutingModule
   ],

@@ -7,9 +7,16 @@ import { ILoginRequest } from 'src/app/modules/auth/models/login.interface';
 })
 export class AuthService {
 
+  isLoggedIn = false;
+
   constructor() { }
 
   login(payload: ILoginRequest) {
+    this.isLoggedIn = true;
     return of(null);
+  }
+
+  getLoginStatus() {
+    return this.isLoggedIn;
   }
 }
