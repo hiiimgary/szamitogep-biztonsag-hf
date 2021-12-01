@@ -20,7 +20,7 @@ export class TokenInterceptor implements HttpInterceptor {
     // Beállítja az Authorization és Locale headert a requestekben
     req = req.clone({
       setHeaders: {
-        Authorization: (token ? token : ''),
+        Authorization: (token ? `Bearer ${token}` : ''),
       }
     });
 
