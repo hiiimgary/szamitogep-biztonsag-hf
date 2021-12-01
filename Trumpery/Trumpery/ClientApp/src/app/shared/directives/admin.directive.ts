@@ -12,7 +12,6 @@ export class AdminDirective {
     private view: ViewContainerRef,
     private authService: AuthService
   ) {
-    console.log('asd');
     if (!this.authService.getIsAdmin()) {
       this.view.clear();
       return;

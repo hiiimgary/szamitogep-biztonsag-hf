@@ -22,6 +22,11 @@
         border-top: none;
         border-radius: 0 0 20px 20px;
         background-color: rgba($white, 0.9);
+        .button-wrapper-center {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+        }
         .btn {
             height: 45px;
             font-size: 18px;
@@ -30,6 +35,13 @@
             background-color: $primary;
             color: $white;
             border-radius: 15px;
+            &.alt {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: transparent;
+                color: $primary;
+            }
         }
     }
 }

@@ -11,8 +11,12 @@
             requiredError="Jelszó kitöltése kötelező" patternError="A jelszó legalább 8 karakter, tartalmaznia kell kis és nagybetűt, illetve számot!">
         </app-input-field>
 
-        <div class="button-wrapper-left">
+        <div class="button-wrapper-center">
             <button class="btn" (click)="onSubmit()">Bejelentkezés</button>
+        </div>
+
+        <div class="button-wrapper-center">
+            <a class="btn alt" [routerLink]="['/', 'auth', 'registration']">Regisztráció</a>
         </div>
     </div>
 </div>

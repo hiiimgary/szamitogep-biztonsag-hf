@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { EMAIL_REGEXP, PASSWORD_REGEXP } from 'src/app/shared/validators/user.validators';
+import { environment } from 'src/environments/environment';
 import { ILoginRequest } from '../../models/login.interface';
 
 @Component({
@@ -14,6 +15,8 @@ export class RegistrationComponent implements OnInit {
 
   registerForm: FormGroup;
 
+  recaptchaSitekey: string;
+
   constructor(
     private readonly fb: FormBuilder,
     private readonly authService: AuthService,
@@ -21,11 +24,13 @@ export class RegistrationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.recaptchaSitekey = environment.recaptchaSitekey;
     this.registerForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern(EMAIL_REGEXP)]],
       password: ['', [Validators.required, Validators.pattern(PASSWORD_REGEXP)]],
-      passwordAgain: ['', [Validators.required, Validators.pattern(PASSWORD_REGEXP)]]
+      passwordAgain: ['', [Validators.required, Validators.pattern(PASSWORD_REGEXP)]],
+      recaptcha: ['', [Validators.required]],
     });
   }
 

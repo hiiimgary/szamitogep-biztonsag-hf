@@ -5,6 +5,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AuthComponent } from './auth.component';
 import { RouterModule } from '@angular/router';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 
 
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    NgxCaptchaModule
   ]
 })
 export class AuthModule { }

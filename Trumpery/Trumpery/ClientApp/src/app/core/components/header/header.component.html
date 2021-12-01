@@ -1,16 +1,22 @@
 <header>
-    <ul class="container">
-        <li>
-            <a class="nav-link accent" [routerLink]="['/', 'animations', 'browse']" routerLinkActive="active">Feltöltés</a>
-        </li>
-        <li>
-            <a class="nav-link" [routerLink]="['/', 'animations', 'browse']" routerLinkActive="active">Animációk</a>
-        </li>
-        <li>
-            <a class="nav-link" [routerLink]="['/', 'profile']" routerLinkActive="active">Profil</a>
-        </li>
-        <li>
-            <a class="nav-link" *adminOnly [routerLink]="['/', 'profile']" routerLinkActive="active">Felhasználók</a>
-        </li>
-    </ul>
+    <div class="container">
+        <img src="assets/logo.png" alt="Logo">
+        <ul>
+            <li>
+                <a class="nav-link accent" (click)="fileUpload.click()">Feltöltés</a>
+            </li>
+            <li>
+                <a class="nav-link" [routerLink]="['/', 'animations']" routerLinkActive="active">Animációk</a>
+            </li>
+            <li>
+                <a class="nav-link" [routerLink]="['/', 'profile']" routerLinkActive="active">Profil</a>
+            </li>
+            <li>
+                <a class="nav-link" *adminOnly [routerLink]="['/', 'profile']" routerLinkActive="active">Felhasználók</a>
+            </li>
+        </ul>
+    </div>
+
 </header>
+<input type="file" id="image-upload" #fileUpload hidden (change)="fileSelected($event.target.files)" multiple="false"
+    accept=".caff">
