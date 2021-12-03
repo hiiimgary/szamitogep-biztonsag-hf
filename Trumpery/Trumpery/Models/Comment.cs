@@ -12,6 +12,8 @@ namespace Trumpery.Models
         [Required]
         public bool Hidden { get; set; }
         [Required]
+        public string TimeOfCreation { get; set; }
+        [Required]
         public User User { get; set; }
         [Required]
         public Caff Caff { get; set; }

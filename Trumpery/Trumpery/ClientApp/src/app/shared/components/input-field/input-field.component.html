@@ -1,5 +1,5 @@
 <div class="input-wrapper" [formGroup]="form">
-    <label *ngIf="inputType !== 'checkbox'">{{ label }}</label>
+    <label>{{ label }}</label>
     <ng-container [ngSwitch]="inputType">
         <input *ngSwitchCase="'text'" [type]="type" [formControlName]="controlKey" class="text-input">
         <ng-container *ngSwitchCase="'image'">
@@ -21,6 +21,7 @@
 
             <input type="file" id="image-upload" #fileUpload hidden (change)="fileSelected($event.target.files)" multiple="false" accept=".png, .jpeg, .jpg">
         </ng-container>
+        <textarea *ngSwitchCase="'textarea'" [formControlName]="controlKey" rows="5"></textarea>
     </ng-container>
     <div class="errors" *ngIf="control.touched && control.invalid" @expand>
         <p class="error" *ngIf="hasPatternError()">{{ patternError }}</p>

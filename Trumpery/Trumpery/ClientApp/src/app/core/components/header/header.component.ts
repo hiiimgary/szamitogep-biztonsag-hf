@@ -12,4 +12,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  fileSelected(fileList) {
+    if (fileList && fileList.length === 1) {
+      const file = fileList[0];
+
+    }
+  }
+
 }

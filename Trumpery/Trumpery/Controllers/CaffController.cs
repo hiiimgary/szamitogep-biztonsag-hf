@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using Trumpery.Controllers.Policies;
 using Trumpery.Data;
+using Trumpery.DTOs;
 using Trumpery.Models;
 
 namespace Trumpery.Controllers
@@ -21,17 +22,17 @@ namespace Trumpery.Controllers
     {
         private readonly TrumperyContext _context;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        CaffController(TrumperyContext context, IWebHostEnvironment environment)
+        public CaffController(TrumperyContext context, IWebHostEnvironment environment)
         {
             _context = context;
             _hostingEnvironment = environment;
         }
 
         [HttpGet("index")]
-        public ActionResult<IEnumerable<Caff>> Index(string keywords)
+        public ActionResult<CaffsResponse> Index([FromBody] SingleStringRequest request)
         {
-            if (keywords == null) return _context.Caffs;
-            return (List<Caff>)_context.Caffs.Where(c => MatchingSearch(c, keywords));
+            if (request.Data == null) return new CaffsResponse(_context.Caffs.ToList());
+            return new CaffsResponse(_context.Caffs.Where(c => MatchingSearch(c, request.Data)).ToList());
         }
 
         private bool MatchingSearch(Caff caff, string keywords)
@@ -48,18 +49,15 @@ namespace Trumpery.Controllers
         }
 
         [HttpGet("show/{id}")]
-        public ActionResult<IEnumerable<Object>> Show(int id)
+        public ActionResult<CaffResponse> Show(int id)
         {
             Caff caff = _context.Caffs.FirstOrDefault(c => c.Id == id);
             if (caff == null) return NotFound();
-            List<Object> caffWithComments = new List<object>();
-            caffWithComments.Add(caff);
-            caffWithComments.AddRange(_context.Comments.Where(c => c.Caff.Id == id));
-            return caffWithComments;
+            return new CaffResponse(caff, _context);
         }
 
         [HttpPost("upload")]
-        public IActionResult Upload(IFormFile file)
+        public IActionResult Upload([FromForm] IFormFile file)
         {
             /// upload caff file
             var caff_folder = Path.Combine(_hostingEnvironment.WebRootPath, "caff");
@@ -113,7 +111,7 @@ namespace Trumpery.Controllers
             caff.GifFilePath = gif_path;
             _context.Caffs.Add(caff);
             _context.SaveChanges();
-            return CreatedAtAction("Show", new { id = caff.Id }, caff);
+            return NoContent();
         }
 
         private string UniqueRandomString32()
@@ -135,7 +133,7 @@ namespace Trumpery.Controllers
             return uniqueRandom;
         }
 
-        [HttpPost("download")]
+        [HttpPost("download/{id}")]
         public IActionResult Download(int id)
         {
             Caff caff = _context.Caffs.FirstOrDefault(c => c.Id == id);

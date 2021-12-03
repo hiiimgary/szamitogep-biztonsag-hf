@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from './components/footer/footer.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -10,10 +12,12 @@ import { RouterModule } from '@angular/router';
   declarations: [
     LayoutComponent,
     HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ]
 })
 export class CoreModule { }

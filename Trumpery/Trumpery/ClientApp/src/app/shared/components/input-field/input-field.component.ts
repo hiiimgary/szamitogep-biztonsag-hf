@@ -52,21 +52,7 @@ export class InputFieldComponent implements OnInit {
     return this.control.hasError('required') && this.requiredError;
   }
 
-  fileSelected(fileList) {
-    if (fileList && fileList.length === 1) {
-      const file = fileList[0];
-      this.form.get(this.controlKey).setValue(file);
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (e) => {
-        const img = new Image();
-        img.src = reader.result as string;
-        img.onload = () => {
-          this.imgString = reader.result as string;
-        };
-      };
-    }
-  }
+
 
   deleteImage() {
     this.imgString = null;
