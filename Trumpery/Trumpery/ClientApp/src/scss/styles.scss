@@ -38,3 +38,26 @@ body {
         }
     }
 }
+
+.button-wrapper-center {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    height: 45px;
+    font-size: 18px;
+    font-weight: 500;
+    width: 200px;
+    background-color: $primary;
+    color: $white;
+    border-radius: 15px;
+    &.alt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent !important;
+        color: $primary !important;
+    }
+}

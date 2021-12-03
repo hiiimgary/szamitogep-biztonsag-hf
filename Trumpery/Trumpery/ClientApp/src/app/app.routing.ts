@@ -8,6 +8,7 @@ import { ProfileComponent } from './modules/auth/components/profile/profile.comp
 import { AnimationListComponent } from './modules/animation/components/animation-list/animation-list.component';
 import { AnimationDetailComponent } from './modules/animation/components/animation-detail/animation-detail.component';
 import { AuthGuard } from './core/services/auth.guard.service';
+import { UsersComponent } from './modules/auth/users/users.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
+      },
+      {
+        path: 'users',
+        component: UsersComponent
       },
       {
         path: 'animations',

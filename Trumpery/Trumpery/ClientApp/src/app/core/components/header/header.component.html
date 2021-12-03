@@ -12,11 +12,10 @@
                 <a class="nav-link" [routerLink]="['/', 'profile']" routerLinkActive="active">Profil</a>
             </li>
             <li>
-                <a class="nav-link" *adminOnly [routerLink]="['/', 'profile']" routerLinkActive="active">Felhasználók</a>
+                <a class="nav-link" *adminOnly [routerLink]="['/', 'users']" routerLinkActive="active">Felhasználók</a>
             </li>
         </ul>
     </div>
 
 </header>
-<input type="file" id="image-upload" #fileUpload hidden (change)="fileSelected($event.target.files)" multiple="false"
-    accept=".caff">
+<input type="file" id="image-upload" #fileUpload hidden (change)="fileSelected($event.target.files)" multiple="false" accept=".caff">

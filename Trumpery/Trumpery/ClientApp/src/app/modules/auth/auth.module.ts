@@ -6,6 +6,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AuthComponent } from './auth.component';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UsersComponent } from './users/users.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
 
 
@@ -15,7 +16,8 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     LoginComponent,
     RegistrationComponent,
     AuthComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,

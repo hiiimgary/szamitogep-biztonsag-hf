@@ -8,38 +8,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor() { }
 
-  isEditing = false;
-  editIndex = null;
-  editProfileForm: FormGroup;
-  users = ['test', 'test2', 'test3'];
-  editUsername = '';
+  currentUser = {
+    email: "test@test.com",
+    username: "testuser123"
+  }
 
   ngOnInit(): void {
-    this.editProfileForm = this.fb.group({
-      username: [''],
-    });
+
   }
 
-  edit() {
-    this.isEditing = true;
-  }
+  logout() {
 
-  save() {
-    this.isEditing = false;
-    //TODO
   }
-
-  enableEditMethod(e, i) {
-    this.isEditing = true;
-    this.editIndex = i;
-    this.editUsername = this.users[i];
-    this.editProfileForm.controls['username'].setValue(this.editUsername);
-  }
-
-  cancel() {
-    this.isEditing = false;
-  }
-
 }
