@@ -21,7 +21,7 @@ export class AuthService {
 
   login(payload: ILoginRequest) {
     this.isLoggedIn = true;
-    return this.req.post(`api/user/login`, { Email: payload.email, Password: payload.password }).pipe(
+    return this.req.post(`auth/login`, { email: payload.email, password: payload.password }).pipe(
       catchError(err => throwError(err)),
       tap((res: { token }) => {
         this.storageService.setCookie('jwt_token', res.token);
@@ -34,11 +34,11 @@ export class AuthService {
   }
 
   register(payload: IRegistrationForm) {
-    return this.req.post(`api/user/create`, {
-      Email: payload.email,
-      Password: payload.password,
-      Name: payload.username,
-      Recaptcha: payload.recaptcha
+    return this.req.post(`auth/register`, {
+      email: payload.email,
+      password: payload.password,
+      name: payload.username,
+      recaptcha: payload.recaptcha
     });
   }
 

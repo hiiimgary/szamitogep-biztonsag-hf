@@ -38,10 +38,13 @@ export class AuthController {
 
     @Post('register')
     async register(@Res({passthrough: true}) res: Response, @Body() user: RegisterDTO) {
-        const captchaResponse = await firstValueFrom(this.httpService.post(`https://www.google.com/recaptcha/api/siteverify`, {
-            secret: `6Lerrm8dAAAAAEgNz8eJYe1tF_uXC7B9swSL2akz`,
-            response: user.recaptcha
-        }));
+        const captchaResponse = await firstValueFrom(
+            this.httpService.post(
+                `https://www.google.com/recaptcha/api/siteverify`,
+                `secret=6Lerrm8dAAAAAEgNz8eJYe1tF_uXC7B9swSL2akz&response=${user.recaptcha}`,
+                { headers: {'Content-Type': 'application/x-www-form-urlencoded'} }
+            )
+        );
 
         if (captchaResponse.data.success) {
             const registeredUser = await this.usersService.getUserByEmail(user.email);

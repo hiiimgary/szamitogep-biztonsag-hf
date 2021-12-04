@@ -48,7 +48,7 @@ export class RegistrationComponent implements OnInit {
     this.authService.register(this.registerForm.value).subscribe((res) => {
       this.router.navigate(['/', 'login']);
     }, err => {
-      window.alert('Valami hiba történt');
+      console.log(err);
     });
   }
 

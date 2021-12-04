@@ -1,6 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { StorageService } from './services/storage.service';
 
 @Injectable()
@@ -19,6 +20,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     // Beállítja az Authorization és Locale headert a requestekben
     req = req.clone({
+      url: `${environment.apiUrl}${req.url}`,
       setHeaders: {
         Authorization: (token ? `Bearer ${token}` : ''),
       }

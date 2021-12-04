@@ -30,6 +30,8 @@
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/serve-static": "^2.2.2",
     "@nestjs/typeorm": "^8.0.2",
+    "form-data": "^4.0.0",
+    "object-to-formdata": "^4.2.2",
     "passport": "^0.5.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
