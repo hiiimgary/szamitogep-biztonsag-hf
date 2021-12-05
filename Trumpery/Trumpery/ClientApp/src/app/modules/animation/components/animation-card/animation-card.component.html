@@ -1,0 +1,19 @@
+<div class="card-wrapper">
+    <div class="animation-card" [routerLink]="['/', 'animations', animation.id]">
+        <img [src]="animation.gifPath" alt="Gif">
+        <div class="content">
+            <h3 class="author">{{ animation.author }}</h3>
+            <p class="description">{{ animation.description }}</p>
+            <p class="tags"><span *ngFor="let t of animation.tags">{{ t }}</span></p>
+        </div>
+        <p class="date">{{ animation.createdAt | date:'yyyy MMMM dd HH:mm' }}</p>
+    </div>
+    <button *adminOnly class="delete-btn" (click)="deleteCaff(animation.id)"><img src="assets/icons/clear.svg" alt="Delete"></button>
+
+</div>
+
+
+<!-- author: string;
+tags: string[];
+description: string;
+createdAt: Date; -->

@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="header">
+        <h2>Bejelentkezés</h2>
+    </div>
+    <div class="body">
+        <app-input-field [form]="loginForm" controlKey="email" label="Email cím" requiredError="Emailcím megadása kötelező" patternError="Az e-mail cím formátuma nem megfelelő">
+        </app-input-field>
+
+        <app-input-field [form]="loginForm" controlKey="password" label="Jelszó" type="password" requiredError="Jelszó kitöltése kötelező" patternError="A jelszó legalább 8 karakter, tartalmaznia kell kis és nagybetűt, illetve számot!">
+        </app-input-field>
+
+        <div class="button-wrapper-center">
+            <button class="btn" (click)="onSubmit()">Bejelentkezés</button>
+        </div>
+
+        <div class="button-wrapper-center">
+            <a class="btn alt" [routerLink]="['/', 'auth', 'registration']">Regisztráció</a>
+        </div>
+    </div>
+</div>

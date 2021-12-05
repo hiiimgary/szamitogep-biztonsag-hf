@@ -1,0 +1,11 @@
+<div class="input-wrapper" [formGroup]="form">
+    <label>{{ label }}</label>
+    <ng-container [ngSwitch]="inputType">
+        <input *ngSwitchCase="'text'" [type]="type" [formControlName]="controlKey" class="text-input">
+        <textarea *ngSwitchCase="'textarea'" [formControlName]="controlKey" rows="5"></textarea>
+    </ng-container>
+    <div class="errors" *ngIf="control.touched && control.invalid" @expand>
+        <p class="error" *ngIf="hasPatternError()">{{ patternError }}</p>
+        <p class="error" *ngIf="hasRequiredError()">{{ requiredError }}</p>
+    </div>
+</div>

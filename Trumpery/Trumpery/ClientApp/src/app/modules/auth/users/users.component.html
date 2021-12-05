@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="header">
+        <h2>Profilok</h2>
+    </div>
+    <div class="body">
+        <table>
+            <tr>
+                <th class="label">Felhasználónév</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let item of users, index as i" class="row">
+                <td>
+                    <div *ngIf="isEditing && editIndex == i">
+                        <app-input-field [form]="editProfileForm" class="edit-input" controlKey="username">
+                        </app-input-field>
+                    </div>
+                    <div *ngIf="!isEditing" class="info">{{item.name}}</div>
+                </td>
+                <td>
+                    <div class="button-wrapper-left">
+                        <button *ngIf="!isEditing" class="btn edit-btn" (click)="enableEditMethod($event, i)">Szerkesztés</button>
+                        <button *ngIf="isEditing && editIndex == i" class="btn edit-btn" (click)="save(i)">Mentés</button>
+                        <button *ngIf="isEditing  && editIndex == i" class="btn edit-btn" (click)="cancel()">Mégse</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>

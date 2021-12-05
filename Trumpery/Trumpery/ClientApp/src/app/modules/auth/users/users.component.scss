@@ -1,0 +1,50 @@
+@import 'shared';
+@import '_variables';
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 700px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    border-radius: 10px;
+    width: 300px;
+    background-color: $accent;
+    height: 40px;
+    padding-left: 10px;
+}
+
+.label {
+    color: black;
+    margin-bottom: 5px;
+}
+
+.info-field {
+    margin-bottom: 50px;
+}
+
+.edit-btn {
+    height: 40px !important;
+    width: 150px !important;
+    font-size: 12px !important;
+    border-radius: 10px !important;
+    margin-left: 40px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 0px;
+}
+
+.button-wrapper-left {
+    margin-top: 5px;
+}

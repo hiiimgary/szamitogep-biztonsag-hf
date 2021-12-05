@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="header">
+        <h2>Profilom</h2>
+    </div>
+    <div class="body">
+        <div class="info-wrapper">
+            <p class="label">Felhasználónév</p>
+            <p class="info">{{currentUser.username}}</p>
+        </div>
+        <div class="info-wrapper">
+            <p class="label">Email cím</p>
+            <p class="info">{{currentUser.email}}</p>
+        </div>
+        <div class="button-wrapper-center">
+            <button class="btn" (click)="logout()">Kijelentkezés</button>
+        </div>
+    </div>
+</div>

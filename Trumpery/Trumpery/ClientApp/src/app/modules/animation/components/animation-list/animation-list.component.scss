@@ -1,0 +1,70 @@
+@import 'shared';
+
+.browse-page {
+    width: 100%;
+    padding-bottom: 40px;
+    .filter-wrapper {
+        width: 100%;
+        padding: 15px 30px;
+        background-color: $secondary-light;
+        border-radius: 5px;
+        .keywords {
+            display: flex;
+            column-gap: 10px;
+            flex-wrap: wrap;
+            min-height: 34px;
+            span {
+                padding: 5px 5px 5px 15px;
+                background-color: $accent;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+                p {
+                    margin-right: 5px;
+                }
+            }
+        }
+        .input-wrapper {
+            display: flex;
+            margin-top: 5px;
+            .text-input {
+                width: 100%;
+                height: 40px;
+                border-radius: 15px 0 0 15px;
+                background-color: $white;
+                font-size: 16px;
+                padding-left: 10px;
+            }
+            .btn {
+                height: 40px;
+                font-size: 18px;
+                font-weight: 500;
+                width: 200px;
+                background-color: $accent;
+                color: $white;
+                border-radius: 0 15px 15px 0;
+                transition: 0.1s ease;
+                &:hover {
+                    background-color: $primary;
+                }
+            }
+        }
+    }
+
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        .card-wrapper {
+            width: 33%;
+            padding: 8px;
+            @include media-breakpoint-down(md) {
+                width: 50%;
+            }
+            @include media-breakpoint-down(xs) {
+                width: 100%;
+                padding: 8px 0;
+            }
+        }
+    }
+}

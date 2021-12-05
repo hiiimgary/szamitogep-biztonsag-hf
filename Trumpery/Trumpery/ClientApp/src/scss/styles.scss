@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'variables';
+@import 'reset';
+@import 'grid';
+body {
+    background-color: $secondary;
+    color: $white;
+    font-family: $font-family;
+    width: 100vw;
+}
+
+.card {
+    width: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    .header {
+        background-color: rgba($primary, 0.9);
+        color: $white;
+        padding: 30px;
+        h2 {
+            font-weight: 400;
+        }
+    }
+    .body {
+        padding: 30px;
+        border-top: none;
+        border-radius: 0 0 20px 20px;
+        background-color: rgba($white, 0.9);
+        .btn {
+            height: 45px;
+            font-size: 18px;
+            font-weight: 500;
+            width: 200px;
+            background-color: $primary;
+            color: $white;
+            border-radius: 15px;
+        }
+    }
+}
+
+.button-wrapper-center {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    height: 45px;
+    font-size: 18px;
+    font-weight: 500;
+    width: 200px;
+    background-color: $primary;
+    color: $white;
+    border-radius: 15px;
+    &.alt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent !important;
+        color: $primary !important;
+    }
+}
