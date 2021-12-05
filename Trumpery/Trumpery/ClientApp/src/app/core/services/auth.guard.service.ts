@@ -8,6 +8,8 @@ import {
     UrlTree
 } from "@angular/router";
 import { AuthService } from "./auth.service";
+import { map, catchError } from 'rxjs/operators';
+import { of } from "rxjs";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -16,10 +18,14 @@ export class AuthGuard implements CanActivate {
         private router: Router) { }
 
     canActivate() {
-        var isAuthenticated = this.authService.getLoginStatus();
-        if (!isAuthenticated) {
-            this.router.navigate(['/auth/login']);
-        }
-        return isAuthenticated;
+        return this.authService.getLoginStatus().pipe(
+            catchError((err) => {
+                this.router.navigate(['/auth/login']);
+                return of(false);
+            }),
+            map((res) => {
+                return true;
+            })
+        );
     }
 }

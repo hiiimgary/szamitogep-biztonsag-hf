@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 import { ILoginRequest } from 'src/app/modules/auth/models/login.interface';
 import { IRegistrationForm } from 'src/app/modules/auth/models/register.interface';
 import { StorageService } from './storage.service';
@@ -43,6 +43,10 @@ export class AuthService {
   }
 
   getLoginStatus() {
-    return this.isLoggedIn;
+    return this.req.get(`auth/is-logged-in`).pipe(
+      map((res) => {
+        console.log(res);
+      })
+    );
   }
 }

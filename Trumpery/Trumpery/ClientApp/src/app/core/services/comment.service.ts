@@ -11,6 +11,6 @@ export class CommentService {
 
   addComment(id, content) {
     console.log(id);
-   return this.req.post(`caff/add-comment/${id}`, content);
+    return this.req.post(`caff/add-comment/${id}`, { content });
   }
 }
