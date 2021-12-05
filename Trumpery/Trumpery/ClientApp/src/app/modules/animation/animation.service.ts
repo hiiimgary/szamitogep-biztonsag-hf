@@ -144,4 +144,11 @@ export class AnimationService {
   deleteCaff(id) {
     return this.req.delete(`caff/delete/${id}`);
   }
+
+  uploadCaff(file: File) {
+    const fd = new FormData();
+    fd.append('file', file);
+
+    return this.req.post(`caff/upload`, fd);
+  }
 }

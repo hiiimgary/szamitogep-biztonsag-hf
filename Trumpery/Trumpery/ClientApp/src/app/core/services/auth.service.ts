@@ -11,7 +11,7 @@ import { StorageService } from './storage.service';
 })
 export class AuthService {
 
-  isAdmin = true;
+  isAdmin: boolean;
   isLoggedIn = false;
 
   constructor(
@@ -23,8 +23,9 @@ export class AuthService {
     this.isLoggedIn = true;
     return this.req.post(`auth/login`, { email: payload.email, password: payload.password }).pipe(
       catchError(err => throwError(err)),
-      tap((res: { token }) => {
+      tap((res: { token, user: { isAdmin: boolean } }) => {
         this.storageService.setCookie('jwt_token', res.token);
+        this.isAdmin = res.user.isAdmin;
       })
     );
   }
@@ -44,8 +45,8 @@ export class AuthService {
 
   getLoginStatus() {
     return this.req.get(`auth/is-logged-in`).pipe(
-      map((res) => {
-        console.log(res);
+      tap((res: any) => {
+        this.isAdmin = res.isAdmin;
       })
     );
   }
