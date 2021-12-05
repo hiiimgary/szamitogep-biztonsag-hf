@@ -22,7 +22,7 @@ export class AnimationListComponent implements OnInit {
   constructor(
     private readonly animationService: AnimationService,
     private readonly route: ActivatedRoute,
-    private readonly router: Router
+    private readonly router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -56,7 +56,12 @@ export class AnimationListComponent implements OnInit {
 
     let keyword = '';
     this.filterWords.forEach(w => keyword = `${keyword}${keyword === '' ? '' : '_'}${w}`);
-    this.router.navigate(['/', 'animations', 'browse'], {queryParams: {keyword}});
+    console.log(keyword);
+    this.animationService.search(keyword).subscribe(() => {
+      this.router.navigate(['/', 'animations', 'browse'], {queryParams: {keyword}});
+
+    }
+    );
   }
 
 }

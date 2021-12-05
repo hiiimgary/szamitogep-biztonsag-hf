@@ -1,5 +1,6 @@
 import { BadRequestException, Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, Put, Request, UseGuards } from '@nestjs/common';
 import { ERROR_KEYS } from 'src/shared/models/error-keys.enum';
+import { IModifyUserRequest } from 'src/shared/request-interfaces/modify-user.request';
 import { RegisterDTO } from 'src/shared/request-interfaces/register.dto';
 import { UserResponse } from 'src/shared/response-interfaces/user.response';
 import { JwtAuthGuard } from '../auth/jwt/jwt-auth.guard';
@@ -12,7 +13,7 @@ export class UsersController {
 
     @UseGuards(JwtAuthGuard)
     @Post('modify/:id')
-    async modify(@Request() req, @Param('id') id: number, @Body() user: RegisterDTO): Promise<UserResponse> {
+    async modify(@Request() req, @Param('id') id: number, @Body() user: IModifyUserRequest): Promise<UserResponse> {
         return this.usersService.modifyUser(id, user);
     }
 

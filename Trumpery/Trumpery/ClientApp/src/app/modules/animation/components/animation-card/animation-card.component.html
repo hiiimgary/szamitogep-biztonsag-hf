@@ -8,7 +8,7 @@
         </div>
         <p class="date">{{ animation.createdAt | date:'yyyy MMMM dd HH:mm' }}</p>
     </div>
-    <button *adminOnly class="delete-btn"><img src="assets/icons/clear.svg" alt="Delete"></button>
+    <button *adminOnly class="delete-btn" (click)="deleteCaff(animation.id)"><img src="assets/icons/clear.svg" alt="Delete"></button>
 
 </div>
 

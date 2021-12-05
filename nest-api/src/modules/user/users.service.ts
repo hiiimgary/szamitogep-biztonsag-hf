@@ -41,8 +41,10 @@ export class UsersService {
     }
 
     async modifyUser(userId: number, user: IModifyUserRequest): Promise<UserResponse> {
-        const existingUser = await this.usersRepository.findOne(userId);
+        console.log(userId);
 
+        const existingUser = await this.usersRepository.findOne(userId);
+        console.log(existingUser);
         if (!user) {
             throw new BadRequestException(ERROR_KEYS.USER_NOT_FOUND);
         }

@@ -15,11 +15,10 @@
     </div>
 
     <div class="add-comment">
-        <app-input-field [form]="commentForm" controlKey="comment" label="Hozzászólás írása" inputType="textarea"
-            requiredError="A komment tartalma nem lehet üres">
+        <app-input-field [form]="commentForm" controlKey="comment" label="Hozzászólás írása" inputType="textarea" requiredError="A komment tartalma nem lehet üres">
         </app-input-field>
         <div class="btn-wrapper">
-            <button class="btn" (click)="onSaveComment(detail.id)">Mentés</button>
+            <button class="btn" (click)="onSaveComment(detail.animation.id)">Mentés</button>
         </div>
     </div>
 

@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IAnimationListItem, IAnimationListItemResponse } from './models/animation-list-item.interface';
 import { IAnimationDetail } from './models/animation-detail.interface';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -106,7 +107,7 @@ export class AnimationService {
     ]
   };
 
-  constructor() { }
+  constructor(private req: HttpClient) { }
 
   getAnimationList(query: string = null): Observable<IAnimationListItem[]> {
     return of(this.list).pipe(
@@ -115,7 +116,7 @@ export class AnimationService {
   }
 
   getAnimationDetail(id: number) {
-    return of(this.detail);
+    return this.req.get(`caff/detail/${id}`);
   }
 
   private mapAnimationList(list: IAnimationListItemResponse[]): IAnimationListItem[] {
@@ -130,5 +131,14 @@ export class AnimationService {
       };
       return mappedItem;
     });
+  }
+
+  search(keywords) {
+    console.log(keywords)
+    return this.req.get(`caff/search`, { params: {keywords: keywords}} );
+  }
+
+  deleteCaff(id) {
+    return this.req.delete(`caff/delete/${id}`);
   }
 }

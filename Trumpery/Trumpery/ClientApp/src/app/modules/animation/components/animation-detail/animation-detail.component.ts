@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AnimationService } from '../../animation.service';
 import { map, switchMap } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommentService } from 'src/app/core/services/comment.service';
 
 @Component({
   selector: 'app-animation-detail',
@@ -18,10 +19,13 @@ export class AnimationDetailComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly animationService: AnimationService
+    private readonly animationService: AnimationService,
+    private readonly commentService: CommentService
+
   ) { }
 
   ngOnInit(): void {
+
 
     this.commentForm = new FormGroup({
       comment: new FormControl('', [Validators.required])
@@ -33,15 +37,19 @@ export class AnimationDetailComponent implements OnInit {
     );
 
     this.animationDetail$.subscribe(console.log);
+
+    console.log(this.animationDetail$);
   }
 
   onSaveComment(id: number) {
+    console.log(id);
     if (this.commentForm.invalid) {
       this.commentForm.markAllAsTouched();
       return;
     }
     const comment: string = this.commentForm.get('comment').value;
-    // POST
+    this.commentService.addComment(id, comment).subscribe();
   }
+
 
 }
