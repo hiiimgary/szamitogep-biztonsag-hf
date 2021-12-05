@@ -27,7 +27,7 @@
         <div class="comment" *ngFor="let comment of detail.comments" [class.hidden]="comment.isHidden">
             <p class="user">{{ comment.user.name }}</p>
             <p class="text">{{ comment.content }}</p>
-            <button *adminOnly class="delete-btn nobg"><img src="assets/icons/clear.svg" alt="Delete"></button>
+            <button *adminOnly class="delete-btn nobg"><img src="assets/icons/clear.svg" alt="Delete" (click)="deleteComment(comment.id)"></button>
         </div>
     </div>
 </div>

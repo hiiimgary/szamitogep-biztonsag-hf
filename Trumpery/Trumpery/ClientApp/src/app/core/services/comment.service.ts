@@ -13,4 +13,8 @@ export class CommentService {
     console.log(id);
     return this.req.post(`caff/add-comment/${id}`, { content });
   }
+
+  deleteComment(id: number) {
+    return this.req.delete(`caff/delete-comment/${id}`);
+  }
 }

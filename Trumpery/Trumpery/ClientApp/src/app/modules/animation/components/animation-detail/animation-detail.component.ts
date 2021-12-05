@@ -57,5 +57,9 @@ export class AnimationDetailComponent implements OnInit {
     });
   }
 
-
+  deleteComment(id: number) {
+    this.commentService.deleteComment(id).subscribe(() => {
+      this.updateData.next(true);
+    });
+  }
 }
