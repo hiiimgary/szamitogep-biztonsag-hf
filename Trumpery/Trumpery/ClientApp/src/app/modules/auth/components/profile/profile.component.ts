@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,15 +9,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
-  currentUser = {
-    email: "test@test.com",
-    username: "testuser123"
+  currentUser = { 
+    email: "", 
+    username:""
   }
 
   ngOnInit(): void {
-
+    this.userService.getCurrentUser().subscribe((res:any) => {
+      this.currentUser.email = res.email,
+      this.currentUser.username = res.name
+    } );
   }
 
   logout() {
