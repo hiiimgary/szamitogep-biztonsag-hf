@@ -110,9 +110,13 @@ export class AnimationService {
   constructor(private req: HttpClient) { }
 
   getAnimationList(query: string = null): Observable<IAnimationListItem[]> {
-    return of(this.list).pipe(
-      map((list: IAnimationListItemResponse[]) => this.mapAnimationList(list))
+    // return of(this.list).pipe(
+    //   map((list: IAnimationListItemResponse[]) => this.mapAnimationList(list))
+    // );
+    return this.req.get(`caff/search`, { params: {keywords: query}} ).pipe(
+      map((res: IAnimationListItemResponse[]) => this.mapAnimationList(res))
     );
+
   }
 
   getAnimationDetail(id: number) {
@@ -134,7 +138,6 @@ export class AnimationService {
   }
 
   search(keywords) {
-    console.log(keywords)
     return this.req.get(`caff/search`, { params: {keywords: keywords}} );
   }
 

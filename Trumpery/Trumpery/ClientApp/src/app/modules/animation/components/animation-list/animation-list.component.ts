@@ -54,14 +54,7 @@ export class AnimationListComponent implements OnInit {
       return;
     }
 
-    let keyword = '';
-    this.filterWords.forEach(w => keyword = `${keyword}${keyword === '' ? '' : '_'}${w}`);
-    console.log(keyword);
-    this.animationService.search(keyword).subscribe(() => {
-      this.router.navigate(['/', 'animations', 'browse'], {queryParams: {keyword}});
-
-    }
-    );
+    this.router.navigate(['/', 'animations', 'browse'], {queryParams: {keyword: JSON.stringify(this.filterWords)}});
   }
 
 }

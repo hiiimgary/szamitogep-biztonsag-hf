@@ -136,7 +136,6 @@ export class CaffService {
 
     async searchAnimations(query: string[]): Promise<IAnimation[]> {
         const animations = await this.caffRepository.find({relations: ['tags']});
-        console.log(query);
         if (!animations) {
             return [];
         }
