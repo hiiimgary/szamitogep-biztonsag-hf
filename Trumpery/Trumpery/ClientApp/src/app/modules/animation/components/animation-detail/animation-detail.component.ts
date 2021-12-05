@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AnimationService } from '../../animation.service';
-import { map, switchMap } from 'rxjs/operators';
+import { map, mergeMap, switchMap } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CommentService } from 'src/app/core/services/comment.service';
 
@@ -14,6 +14,8 @@ import { CommentService } from 'src/app/core/services/comment.service';
 export class AnimationDetailComponent implements OnInit {
 
   animationDetail$: Observable<any>;
+
+  updateData = new BehaviorSubject<boolean>(true);
 
   commentForm: FormGroup;
 
@@ -31,7 +33,8 @@ export class AnimationDetailComponent implements OnInit {
       comment: new FormControl('', [Validators.required])
     });
 
-    this.animationDetail$ = this.route.params.pipe(
+    this.animationDetail$ = this.updateData.asObservable().pipe(
+      mergeMap(() => this.route.params),
       map((params: { id: number }) => params.id),
       switchMap((id: number) => this.animationService.getAnimationDetail(id))
     );
@@ -48,8 +51,15 @@ export class AnimationDetailComponent implements OnInit {
       return;
     }
     const comment: string = this.commentForm.get('comment').value;
-    this.commentService.addComment(id, comment).subscribe();
+    this.commentService.addComment(id, comment).subscribe(() => {
+      this.commentForm.reset();
+      this.updateData.next(true);
+    });
   }
 
-
+  deleteComment(id: number) {
+    this.commentService.deleteComment(id).subscribe(() => {
+      this.updateData.next(true);
+    });
+  }
 }

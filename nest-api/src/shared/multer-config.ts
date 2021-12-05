@@ -13,7 +13,7 @@ export const multerConfig = {
 export const multerOptions = {
     // Enable file size limits
     limits: {
-        fileSize: 7000000,
+        fileSize: 10000000,
     },
     // Check the mimetypes to allow for upload
     fileFilter: (req: any, file: any, cb: any) => {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AnimationService } from '../../animation.service';
 import { IAnimationListItem } from '../../models/animation-list-item.interface';
@@ -11,6 +11,7 @@ import { IAnimationListItem } from '../../models/animation-list-item.interface';
 export class AnimationCardComponent implements OnInit {
 
   @Input() animation: IAnimationListItem;
+  @Output() delete = new EventEmitter();
 
   constructor(private animationService: AnimationService) { }
 
@@ -18,9 +19,6 @@ export class AnimationCardComponent implements OnInit {
   }
 
   deleteCaff(id) {
-    this.animationService.deleteCaff(id).subscribe(
-      res => console.log(res),
-      error => window.alert('Valami hiba történt!')
-    );
+    this.delete.emit();
   }
 }

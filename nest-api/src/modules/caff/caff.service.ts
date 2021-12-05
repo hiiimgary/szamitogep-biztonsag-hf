@@ -22,7 +22,6 @@ export class CaffService {
     async parseCaffToGif(filename: string, userId: number) {
         const animationMetadataRaw: string = await new Promise((resolve, reject) => {    
             exec('dist/parser.exe', [`dist/public/media/${filename}`, `dist/public/media/${filename.replace('.caff', '.gif')}`], (err, data: string) => {
-                console.log(err);
                 console.log(data);
                 if (err) reject(err);
                 else resolve(data);
@@ -136,7 +135,6 @@ export class CaffService {
 
     async searchAnimations(query: string[]): Promise<IAnimation[]> {
         const animations = await this.caffRepository.find({relations: ['tags']});
-        console.log(query);
         if (!animations) {
             return [];
         }
@@ -183,11 +181,12 @@ export class CaffService {
     }
 
     private parseMetadata(meta: string): IMetadata {
+        const splittedMeta = meta.split('\r\n');
         return {
-            tags: ['wow', 'nice', 'cool'],
-            description: 'mock description',
-            author: 'TesztElek',
-            createdAt: '2020.7.2 14:50'
+            tags: [splittedMeta[3]],
+            description: splittedMeta[2],
+            author: splittedMeta[1],
+            createdAt: splittedMeta[0] ? splittedMeta[0] : "2021-11-11T13:22"
         }
     }
 

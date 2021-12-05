@@ -16,7 +16,7 @@
     <!-- ANIMATION CARDS -->
     <div class="list">
         <div class="card-wrapper" *ngFor="let animation of animationList$ | async">
-            <app-animation-card [animation]="animation"></app-animation-card>
+            <app-animation-card [animation]="animation" (delete)="deleteCaff(animation.id)"></app-animation-card>
         </div>
     </div>
 </div>

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimationService } from '../../animation.service';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { IAnimationListItem } from '../../models/animation-list-item.interface';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-animation-list',
@@ -17,6 +17,8 @@ export class AnimationListComponent implements OnInit {
 
   filterWords: string[] = [];
 
+  updateData = new BehaviorSubject<boolean>(true);
+
   filterControl: FormControl;
 
   constructor(
@@ -27,7 +29,8 @@ export class AnimationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.filterControl = new FormControl('');
-    this.animationList$ = this.route.queryParams.pipe(
+    this.animationList$ = this.updateData.asObservable().pipe(
+      mergeMap(() => this.route.queryParams),
       map((params: {keyword: string}) => params.keyword),
       switchMap((keyword: string) => this.animationService.getAnimationList(keyword))
     );
@@ -45,6 +48,13 @@ export class AnimationListComponent implements OnInit {
     this.filterControl.reset();
   }
 
+  deleteCaff(id: number) {
+    this.animationService.deleteCaff(id).subscribe(
+      res => this.updateData.next(true),
+      error => window.alert('Valami hiba történt!')
+    );
+  }
+
   removeKeyword(str: string) {
     this.filterWords = this.filterWords.filter(w => w !== str);
   }
@@ -54,14 +64,7 @@ export class AnimationListComponent implements OnInit {
       return;
     }
 
-    let keyword = '';
-    this.filterWords.forEach(w => keyword = `${keyword}${keyword === '' ? '' : '_'}${w}`);
-    console.log(keyword);
-    this.animationService.search(keyword).subscribe(() => {
-      this.router.navigate(['/', 'animations', 'browse'], {queryParams: {keyword}});
-
-    }
-    );
+    this.router.navigate(['/', 'animations', 'browse'], {queryParams: {keyword: JSON.stringify(this.filterWords)}});
   }
 
 }
