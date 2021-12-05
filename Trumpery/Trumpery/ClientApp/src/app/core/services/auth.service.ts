@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { ILoginRequest } from 'src/app/modules/auth/models/login.interface';
@@ -11,12 +12,13 @@ import { StorageService } from './storage.service';
 })
 export class AuthService {
 
-  isAdmin = true;
+  isAdmin = false;
   isLoggedIn = false;
 
   constructor(
     private readonly req: HttpClient,
-    private readonly storageService: StorageService
+    private readonly storageService: StorageService,
+    private readonly router: Router
   ) { }
 
   login(payload: ILoginRequest) {
@@ -44,5 +46,11 @@ export class AuthService {
 
   getLoginStatus() {
     return this.isLoggedIn;
+  }
+
+  logout() {
+    this.isLoggedIn = false;
+    this.storageService.setCookie('jwt_token', '');
+    this.router.navigate(['auth/login']);
   }
 }

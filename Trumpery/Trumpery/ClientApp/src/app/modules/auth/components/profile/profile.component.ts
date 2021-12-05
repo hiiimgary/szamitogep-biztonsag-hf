@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, 
+    private authService: AuthService) { }
 
   currentUser = { 
     email: "", 
@@ -24,6 +26,6 @@ export class ProfileComponent implements OnInit {
   }
 
   logout() {
-
+    this.authService.logout();
   }
 }
